@@ -1,7 +1,8 @@
 import { useState, ChangeEvent } from "react";
 
 import { useNavigate } from "react-router-dom";
-import { User } from "firebase/auth";
+import { googleSignInStart } from "../store/user/user.action";
+import {useDispatch} from "react-redux"
 import {
   LoginDiv,
   FormFieldLabels,
@@ -10,17 +11,15 @@ import {
   Or,
   DontHaveAccout,
 } from "./login.style";
-import { createUserDocumentFromAuth } from "../utils/firebase.utils";
-import { signInWithGooglePopup } from "../utils/firebase.utils";
+
+
 const Login = () => {
   const navigate = useNavigate();
-
+const dispatch = useDispatch()
   const signUp = () => {
     navigate("/signUp", { replace: true });
   };
-  // useEffect(() => {
-  //   if (auth) navigate("/");
-  // }, []);
+
   const defaultFormFields = {
     email: "",
     password: "",
@@ -34,15 +33,8 @@ const Login = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
-  const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    createUserDocumentFromAuth(user);
-    // if (response) {
-    //   console.log(response);
-    //   // const userDocRef = await createUserDocument(response.user, levels);
-    //   // dispatch(setLoading(true));
-    //   // navigate("/");
-    // }
+  const signInWithGoogle =  () => {
+  dispatch(googleSignInStart())
   };
   return (
     <>

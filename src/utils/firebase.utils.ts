@@ -4,8 +4,12 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   UserCredential,
   User,
+  onAuthStateChanged,
+  signOut,
+  NextOrObserver,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -31,10 +35,14 @@ googleProvider.setCustomParameters({
   prompt: "select_account",
 });
 
-export const signInWithGooglePopup = (): Promise<UserCredential> => {
+export const signInWithGooglepopup = (): Promise<UserCredential> => {
   return signInWithPopup(auth, googleProvider);
 };
 export const db = getFirestore();
+
+export const signOutUser = () => {
+  signOut(auth);
+};
 
 export type AdditionalInformation = {
   displayName?: string;
@@ -77,4 +85,26 @@ export const createAuthUserWithEmailAndPassword = async (
   password: string
 ): Promise<UserCredential | undefined> => {
   return createUserWithEmailAndPassword(auth, email, password);
+};
+
+export const signInAuthUserWithEmailAndPassword = (
+  email: string,
+  password: string
+) => {
+ return signInWithEmailAndPassword(auth, email, password);
+};
+export const onAuthStateChangedListener = (callback: NextOrObserver<User>) =>
+  onAuthStateChanged(auth, callback);
+
+export const getCurrentUser = (): Promise<User | null> => {
+  return new Promise((resolve, reject) => {
+    const unsubscibe = onAuthStateChanged(
+      auth,
+      (userAuth) => {
+        unsubscibe();
+        resolve(userAuth);
+      },
+      reject
+    );
+  });
 };

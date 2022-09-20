@@ -4,6 +4,8 @@ import { getRedirectResult } from "firebase/auth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthErrorCodes, User, UserCredential } from "firebase/auth";
+import Login from "../login/login.component";
+import { checkUserSession, signUpStart } from "../store/user/user.action";
 import {
   FormFieldLabels,
   FormInputs,
@@ -11,15 +13,17 @@ import {
   DontHaveAccout,
   Or,
 } from "../login/login.style";
-import {
-  createAuthUserWithEmailAndPassword,
-  createUserDocumentFromAuth,
-} from "../utils/firebase.utils";
+import { useDispatch } from "react-redux";
+import { SignUpStart } from "../store/user/user.action";
 import { SignUpPageDiv, SignUpDiv } from "./sign-up.style";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(checkUserSession());
+  }, []);
   const defaultFormFields = {
     displayName: "",
     email: "",
@@ -43,16 +47,7 @@ const SignUp = () => {
       return;
     }
     try {
-      const usercredential = await createAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
-      if (usercredential) {
-        const { user } = usercredential;
-        const data = await createUserDocumentFromAuth(user, { displayName });
-        console.log(data);
-      }
-
+      dispatch(signUpStart(email, password, displayName));
       resetFields();
     } catch (error) {
       // if (AuthErrorCodes.EMAIL_EXISTS) {

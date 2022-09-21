@@ -91,7 +91,7 @@ export const signInAuthUserWithEmailAndPassword = (
   email: string,
   password: string
 ) => {
- return signInWithEmailAndPassword(auth, email, password);
+  return signInWithEmailAndPassword(auth, email, password);
 };
 export const onAuthStateChangedListener = (callback: NextOrObserver<User>) =>
   onAuthStateChanged(auth, callback);
@@ -108,3 +108,31 @@ export const getCurrentUser = (): Promise<User | null> => {
     );
   });
 };
+
+type Data = {
+  name: string;
+};
+
+const addData = async () => {
+  const userdocref = doc(db, "quizes", "12345678");
+
+  const usersnapshot = await getDoc(userdocref);
+
+  try {
+    if (usersnapshot.exists()) {
+      setDoc(userdocref, { name: "najib" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  return userdocref;
+};
+
+export type QuizFormat={
+  question:string,
+  option1:string,
+  option2:string,
+  option3:string,
+  option4:string,
+  answer:string,
+}

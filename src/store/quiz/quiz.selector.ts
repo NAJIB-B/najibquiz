@@ -15,14 +15,9 @@ export const selectfinishSettingQuestion = createSelector(
   [selectQuizReducers],
   (finishSettingQuestion) => finishSettingQuestion.finishSettingQuestion
 );
+export const selectQuiz = createSelector(
+  [selectQuizReducers],
+  (quiz) => quiz.quiz
+);
 
-// export const selectCategoriesMap = createSelector(
-//   [selectCategories],
-//   (categories) => {
-//     return categories.reduce((acc, category) => {
-//       const { title, items } = category;
-//       acc[title.toLowerCase()] = items;
-//       return acc;
-//     }, {} as CategoryMap);
-//   }
-// );
+

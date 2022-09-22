@@ -18,6 +18,8 @@ import {
   setDoc,
   QueryDocumentSnapshot,
 } from "firebase/firestore";
+import { generatePassword } from "./helper";
+import { QuizObject } from "../store/quiz/quiz.reducer";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBpkwaI02ylEJU63fP1YWi1gdg2uaLCQZ8",
@@ -115,22 +117,36 @@ type Data = {
   name: string;
 };
 
-const addData = async () => {
-  const userdocref = doc(db, "quizes", "12345678");
+// const addData = async () => {
+//   const userdocref = doc(db, "quizes", "12345678");
 
-  const usersnapshot = await getDoc(userdocref);
+//   const usersnapshot = await getDoc(userdocref);
 
+//   try {
+//     if (usersnapshot.exists()) {
+//       setDoc(userdocref, { name: "najib" });
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+//   return userdocref;
+// };
+
+export const uploadABatchOfQuizQuestions = async (quiz: QuizObject) => {
+  const id = generatePassword();
+  console.log(id);
+  const userDocRef = doc(db, "AllQuiz", id);
+
+  const userSnapshot = await getDoc(userDocRef);
   try {
-    if (usersnapshot.exists()) {
-      setDoc(userdocref, { name: "najib" });
+    if (!userSnapshot.exists()) {
+      setDoc(userDocRef, quiz);
     }
   } catch (error) {
     console.log(error);
   }
-  return userdocref;
+  return userSnapshot as QueryDocumentSnapshot<QuizObject>;
 };
-
-export const uploadABatchOfQuizQuestions = (quiz: QuizFormat) => {};
 
 export type QuizFormat = {
   question: string;

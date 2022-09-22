@@ -4,6 +4,7 @@ import {
   createAction,
   ActionWithPayload,
   withMatcher,
+  Action,
 } from "../../utils/reducer.util";
 
 export type SetQuestionNumber = ActionWithPayload<
@@ -27,6 +28,8 @@ export type UploadQuizQuestionStart = ActionWithPayload<
   QUIZ_ACTION_TYPES.UPLOAD_QUIZ_QUESTIONS_START,
   QuizObject
 >;
+export type UploadQuizQuestionSuccess =
+  Action<QUIZ_ACTION_TYPES.UPLOAD_QUIZ_QUESTIONS_SUCCESS>;
 
 export const setQuestionNumber = withMatcher(
   (value: number): SetQuestionNumber => {
@@ -50,8 +53,14 @@ export const finishSettingQuestion = withMatcher(
   }
 );
 
-// export const uploadQuizQuestionStart = withMatcher(
-//   (value: QuizFormat[]): UploadQuizQuestionStart => {
-//     return createAction(QUIZ_ACTION_TYPES.UPLOAD_QUIZ_QUESTIONS_START, value);
-//   }
-// );
+export const uploadQuizQuestionStart = withMatcher(
+  (value: QuizObject): UploadQuizQuestionStart => {
+    return createAction(QUIZ_ACTION_TYPES.UPLOAD_QUIZ_QUESTIONS_START, value);
+  }
+);
+
+export const uploadQuizQuestionSuccess = withMatcher(
+  (): UploadQuizQuestionSuccess => {
+    return createAction(QUIZ_ACTION_TYPES.UPLOAD_QUIZ_QUESTIONS_SUCCESS);
+  }
+);

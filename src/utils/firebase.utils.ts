@@ -65,11 +65,13 @@ export const createUserDocumentFromAuth = async (
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
+    const quiz = {};
     try {
       await setDoc(userDocRef, {
         displayName,
         email,
         createdAt,
+        quiz,
         ...additionalInformation,
       });
     } catch (error) {
@@ -128,11 +130,13 @@ const addData = async () => {
   return userdocref;
 };
 
-export type QuizFormat={
-  question:string,
-  option1:string,
-  option2:string,
-  option3:string,
-  option4:string,
-  answer:string,
-}
+export const uploadABatchOfQuizQuestions = (quiz: QuizFormat) => {};
+
+export type QuizFormat = {
+  question: string;
+  option1: string;
+  option2: string;
+  option3: string;
+  option4: string;
+  answer: string;
+};

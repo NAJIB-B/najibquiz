@@ -1,15 +1,15 @@
 import { takeLatest, put, all, call } from "typed-redux-saga/macro";
 import { QUIZ_ACTION_TYPES } from "./quiz.types";
-import { SetQuestionNumber, setQuestionNumber } from "./quiz.action";
+import { SetQuestionNumber, setQuestionNumber, UploadQuizQuestionStart } from "./quiz.action";
 
-// export function* setQuestionsNumber({ payload: { value } }: SetQuestionNumber) {
+// export function* uploadQuestions({ payload }: UploadQuizQuestionStart) {
 //   try {
 //     yield* put(setQuestionNumber(value));
 //   } catch (error) {}
 // }
 
-// export function* onSetQuestionNumber() {
-//   yield* takeLatest(QUIZ_ACTION_TYPES.SET_QUESTION_NUMBER, setQuestionsNumber);
+// export function* onUploadQuizQuestionStart() {
+//   yield* takeLatest(QUIZ_ACTION_TYPES.UPLOAD_QUIZ_QUESTIONS_START, uploadQuestions);
 // }
 
 export function* quizSaga() {

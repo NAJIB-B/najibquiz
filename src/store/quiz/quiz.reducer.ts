@@ -9,6 +9,13 @@ import {
 export type QuizObject = {
   [key: string]: QuizFormat;
 };
+export type QuizMainObject = {
+  id: string;
+  quizName: string;
+  quizOwner: string | null;
+  quizData: QuizObject;
+};
+
 export type QuizState = {
   readonly numberOfQuestions: number;
   readonly quizName: string;

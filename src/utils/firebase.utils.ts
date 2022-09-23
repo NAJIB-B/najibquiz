@@ -19,7 +19,7 @@ import {
   QueryDocumentSnapshot,
 } from "firebase/firestore";
 import { generatePassword } from "./helper";
-import { QuizObject } from "../store/quiz/quiz.reducer";
+import { QuizObject, QuizMainObject } from "../store/quiz/quiz.reducer";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBpkwaI02ylEJU63fP1YWi1gdg2uaLCQZ8",
@@ -132,9 +132,11 @@ type Data = {
 //   return userdocref;
 // };
 
-export const uploadABatchOfQuizQuestions = async (quiz: QuizObject) => {
-  const id = generatePassword();
-  console.log(id);
+export const uploadABatchOfQuizQuestions = async (
+  quiz: QuizMainObject,
+ 
+) => {
+  const id = quiz.id
   const userDocRef = doc(db, "AllQuiz", id);
 
   const userSnapshot = await getDoc(userDocRef);
@@ -148,7 +150,25 @@ export const uploadABatchOfQuizQuestions = async (quiz: QuizObject) => {
   return userSnapshot as QueryDocumentSnapshot<QuizObject>;
 };
 
+// export const uploadQuizToUserDataBase = async (uid: string, id:) => {
+//   const userDocRef = doc(db, "users", uid);
+//   const data = {
+//     quiz: {
+//       [level]: { star: playerStar, playerMoves: moves },
+//     },
+//   };
+//   try {
+//   } catch (error) {}
+
+//   try {
+//     await setDoc(userDocRef, data, { merge: true });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
 export type QuizFormat = {
+  questionNumber: string;
   question: string;
   option1: string;
   option2: string;

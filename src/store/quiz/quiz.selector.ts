@@ -20,4 +20,9 @@ export const selectQuiz = createSelector(
   (quiz) => quiz.quiz
 );
 
+export const selectQuizName = createSelector(
+  [selectQuizReducers],
+  (quiz) => quiz.quizName
+);
+
 

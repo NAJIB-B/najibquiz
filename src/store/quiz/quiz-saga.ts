@@ -6,16 +6,16 @@ import {
   UploadQuizQuestionStart,
   uploadQuizQuestionSuccess,
 } from "./quiz.action";
+import { generatePassword } from "../../utils/helper";
 import { uploadABatchOfQuizQuestions } from "../../utils/firebase.utils";
 
 export function* uploadQuestions({ payload }: UploadQuizQuestionStart) {
-  const uploadedQuiz = yield* call(uploadABatchOfQuizQuestions, payload);
-  console.log(uploadedQuiz);
-  //   try {
-  //     yield* put(uploadQuizQuestionSuccess);
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
+  try {
+    const uploadedQuiz = yield* call(uploadABatchOfQuizQuestions, payload);
+    yield* put(uploadQuizQuestionSuccess);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export function* onUploadQuizQuestionStart() {

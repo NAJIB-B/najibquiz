@@ -3,9 +3,16 @@ import { HomeDiv } from "./home.style";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { checkUserSession } from "../store/user/user.action";
+
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  // const root = React.createElement("h1", {}, "My First React Code");
+  // ReactDOM.render(root, document.getElementById("root"));
+  const arr = [1, 2, 3, 4, 5, 6];
+  const Input = () => {
+    return <input placeholder="Your input here" />;
+  };
   useEffect(() => {
     dispatch(checkUserSession());
   }, []);

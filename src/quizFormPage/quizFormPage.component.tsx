@@ -7,9 +7,11 @@ import {
 } from "../store/quiz/quiz.selector";
 import { useSelector } from "react-redux";
 import { addQuestionToQuiz } from "../store/quiz/quiz.action";
+
 import { finishSettingQuestion } from "../store/quiz/quiz.action";
 import { selectfinishSettingQuestion } from "../store/quiz/quiz.selector";
-
+import React from "react";
+import ReactDOM from "react-dom";
 import CreateQuizButtonPage from "../createQuizButtonPage/createQuizButtonPage.component";
 const defaultFormFields = {
   question: "",
@@ -33,6 +35,15 @@ const QuizFormPage = () => {
 
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { question, option1, option2, option3, option4, answer } = formFields;
+  //   let useStateValue: any;
+  //   const [inputList, setInputList] = useState(useStateValue);
+
+  //   const Input = () => {
+  //     return <input placeholder="Your input here" />;
+  //   };
+  //   const onAddBtnClick = () => {
+  //     setInputList(<Input key={inputList.length} />);
+  //   };
 
   const change = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -54,6 +65,7 @@ const QuizFormPage = () => {
     dispatch(
       addQuestionToQuiz({
         [number]: {
+          questionNumber: number,
           question,
           option1,
           option2,
@@ -119,7 +131,8 @@ const QuizFormPage = () => {
             onChange={change}
             value={answer}
           />
-
+          {/* <button onClick={onAddBtnClick}>Add input</button>
+          {inputList} */}
           <button onClick={addToQuestions}>Add to questions</button>
           <h1>QuizSettingsPage</h1>
         </>

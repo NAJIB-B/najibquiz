@@ -1,5 +1,5 @@
 import { QUIZ_ACTION_TYPES } from "./quiz.types";
-import { QuizObject } from "./quiz.reducer";
+import { QuizObject , QuizMainObject} from "./quiz.reducer";
 import {
   createAction,
   ActionWithPayload,
@@ -26,7 +26,7 @@ export type FinishSettingQuestion = ActionWithPayload<
 >;
 export type UploadQuizQuestionStart = ActionWithPayload<
   QUIZ_ACTION_TYPES.UPLOAD_QUIZ_QUESTIONS_START,
-  QuizObject
+  QuizMainObject
 >;
 export type UploadQuizQuestionSuccess =
   Action<QUIZ_ACTION_TYPES.UPLOAD_QUIZ_QUESTIONS_SUCCESS>;
@@ -54,7 +54,7 @@ export const finishSettingQuestion = withMatcher(
 );
 
 export const uploadQuizQuestionStart = withMatcher(
-  (value: QuizObject): UploadQuizQuestionStart => {
+  (value: QuizMainObject): UploadQuizQuestionStart => {
     return createAction(QUIZ_ACTION_TYPES.UPLOAD_QUIZ_QUESTIONS_START, value);
   }
 );

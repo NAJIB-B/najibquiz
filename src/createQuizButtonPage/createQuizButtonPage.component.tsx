@@ -1,14 +1,26 @@
 import { useSelector } from "react-redux";
-import { selectQuiz } from "../store/quiz/quiz.selector";
+import { selectQuiz, selectQuizName } from "../store/quiz/quiz.selector";
+import { selectUserUid } from "../store/user/user.selector";
 import { useDispatch } from "react-redux";
+import { generatePassword } from "../utils/helper";
 import { uploadQuizQuestionStart } from "../store/quiz/quiz.action";
+import { QuizMainObject } from "../store/quiz/quiz.reducer";
 
 const CreateQuizButtonPage = () => {
   const dispatch = useDispatch();
-  const quiz = useSelector(selectQuiz);
+  const quizData = useSelector(selectQuiz);
+  const quizName = useSelector(selectQuizName);
+  const quizOwner = useSelector(selectUserUid);
 
   const uploadQuiz = () => {
-    dispatch(uploadQuizQuestionStart(quiz));
+    const id = generatePassword();
+    const data: QuizMainObject = {
+      id,
+      quizName,
+      quizOwner,
+      quizData,
+    };
+    dispatch(uploadQuizQuestionStart(data));
   };
 
   return (

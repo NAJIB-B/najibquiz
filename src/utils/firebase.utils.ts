@@ -20,6 +20,7 @@ import {
 } from "firebase/firestore";
 import { generatePassword } from "./helper";
 import { QuizObject, QuizMainObject } from "../store/quiz/quiz.reducer";
+import { StringLiteralLike } from "typescript";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBpkwaI02ylEJU63fP1YWi1gdg2uaLCQZ8",
@@ -132,11 +133,8 @@ type Data = {
 //   return userdocref;
 // };
 
-export const uploadABatchOfQuizQuestions = async (
-  quiz: QuizMainObject,
- 
-) => {
-  const id = quiz.id
+export const uploadABatchOfQuizQuestions = async (quiz: QuizMainObject) => {
+  const id = quiz.id;
   const userDocRef = doc(db, "AllQuiz", id);
 
   const userSnapshot = await getDoc(userDocRef);
@@ -150,22 +148,30 @@ export const uploadABatchOfQuizQuestions = async (
   return userSnapshot as QueryDocumentSnapshot<QuizObject>;
 };
 
-// export const uploadQuizToUserDataBase = async (uid: string, id:) => {
-//   const userDocRef = doc(db, "users", uid);
-//   const data = {
-//     quiz: {
-//       [level]: { star: playerStar, playerMoves: moves },
-//     },
-//   };
-//   try {
-//   } catch (error) {}
+export type UserQuizObject = {
+  id: string;
+  quizName: string;
+  quizOwner: string | null;
+};
+export const uploadQuizToUserDataBase = async (
+  quiz: UserQuizObject,
+  
+) => {
+  const { id, quizName, quizOwner } = quiz;
+ if(!quizOwner)return
+  const userDocRef = doc(db, "users", quizOwner);
+  const data = {
+    quiz: {
+      [id]: { id, quizName },
+    },
+  };
 
-//   try {
-//     await setDoc(userDocRef, data, { merge: true });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+  try {
+    await setDoc(userDocRef, data, { merge: true });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export type QuizFormat = {
   questionNumber: string;

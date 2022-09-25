@@ -1,5 +1,5 @@
 import { QUIZ_ACTION_TYPES } from "./quiz.types";
-import { QuizObject , QuizMainObject} from "./quiz.reducer";
+import { QuizObject, QuizMainObject } from "./quiz.reducer";
 import {
   createAction,
   ActionWithPayload,
@@ -30,6 +30,7 @@ export type UploadQuizQuestionStart = ActionWithPayload<
 >;
 export type UploadQuizQuestionSuccess =
   Action<QUIZ_ACTION_TYPES.UPLOAD_QUIZ_QUESTIONS_SUCCESS>;
+
 
 export const setQuestionNumber = withMatcher(
   (value: number): SetQuestionNumber => {

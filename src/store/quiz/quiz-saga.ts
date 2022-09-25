@@ -7,12 +7,17 @@ import {
   uploadQuizQuestionSuccess,
 } from "./quiz.action";
 import { generatePassword } from "../../utils/helper";
-import { uploadABatchOfQuizQuestions } from "../../utils/firebase.utils";
+import {
+  uploadABatchOfQuizQuestions,
+  uploadQuizToUserDataBase,
+} from "../../utils/firebase.utils";
 
 export function* uploadQuestions({ payload }: UploadQuizQuestionStart) {
+  const { id, quizName, quizOwner } = payload;
+  const quiz = { id, quizName, quizOwner };
   try {
     const uploadedQuiz = yield* call(uploadABatchOfQuizQuestions, payload);
-    yield* put(uploadQuizQuestionSuccess);
+    yield* call(uploadQuizToUserDataBase, quiz);
   } catch (error) {
     console.log(error);
   }

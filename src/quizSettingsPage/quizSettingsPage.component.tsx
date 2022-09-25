@@ -1,5 +1,10 @@
 import { useState, ChangeEvent } from "react";
-import { setQuestionNumber, setQuizName , finishSettingQuestion} from "../store/quiz/quiz.action";
+import {
+  setQuestionNumber,
+  setQuizName,
+  finishSettingQuestion,
+
+} from "../store/quiz/quiz.action";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 const defaultFormFields = {
@@ -17,7 +22,7 @@ const QuizSettingsPage = () => {
     setFormFields({ ...formFields, [name]: value });
   };
   const createQuiz = () => {
-    dispatch(finishSettingQuestion(false))
+    dispatch(finishSettingQuestion(false));
     dispatch(setQuestionNumber(+questionNumber));
     dispatch(setQuizName(quizName));
     navigate("quizFormPage");

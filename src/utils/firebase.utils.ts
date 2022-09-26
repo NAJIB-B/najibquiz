@@ -17,6 +17,7 @@ import {
   getDoc,
   setDoc,
   QueryDocumentSnapshot,
+  DocumentSnapshot,
 } from "firebase/firestore";
 import { generatePassword } from "./helper";
 import { QuizObject, QuizMainObject } from "../store/quiz/quiz.reducer";
@@ -135,17 +136,17 @@ type Data = {
 
 export const uploadABatchOfQuizQuestions = async (quiz: QuizMainObject) => {
   const id = quiz.id;
-  const userDocRef = doc(db, "AllQuiz", id);
+  const quizDocRef = doc(db, "AllQuiz", id);
 
-  const userSnapshot = await getDoc(userDocRef);
+  const quizSnapshot = await getDoc(quizDocRef);
   try {
-    if (!userSnapshot.exists()) {
-      setDoc(userDocRef, quiz);
+    if (!quizSnapshot.exists()) {
+      setDoc(quizDocRef, quiz);
     }
   } catch (error) {
     console.log(error);
   }
-  return userSnapshot as QueryDocumentSnapshot<QuizObject>;
+  return quizSnapshot as QueryDocumentSnapshot<QuizMainObject>;
 };
 
 export type UserQuizObject = {
@@ -153,12 +154,9 @@ export type UserQuizObject = {
   quizName: string;
   quizOwner: string | null;
 };
-export const uploadQuizToUserDataBase = async (
-  quiz: UserQuizObject,
-  
-) => {
+export const uploadQuizToUserDataBase = async (quiz: UserQuizObject) => {
   const { id, quizName, quizOwner } = quiz;
- if(!quizOwner)return
+  if (!quizOwner) return;
   const userDocRef = doc(db, "users", quizOwner);
   const data = {
     quiz: {
@@ -173,6 +171,14 @@ export const uploadQuizToUserDataBase = async (
   }
 };
 
+export const getAQuizFromDb = async (
+  quizId: string
+) => {
+  const quizDocRef = doc(db, "AllQuiz", quizId);
+  const quizSnapshot = await getDoc(quizDocRef);
+ return quizSnapshot  as DocumentSnapshot<QuizMainObject>
+};
+
 export type QuizFormat = {
   questionNumber: string;
   question: string;
@@ -181,4 +187,15 @@ export type QuizFormat = {
   option3: string;
   option4: string;
   answer: string;
+};
+export type EditableQuizFormat = {
+  questionNumber?: string;
+  question?: string;
+  option1?: string;
+  option2?: string;
+  option3?: string;
+  option4?: string;
+  answer?: string;
+  checked?: string;
+  questionArrayNumber?: number;
 };

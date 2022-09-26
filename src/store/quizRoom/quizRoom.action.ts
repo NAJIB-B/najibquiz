@@ -6,44 +6,51 @@ import {
 } from "../../utils/reducer.util";
 import { QUIZ_ROOM_TYPES } from "./quizRoom.types";
 import { QuizResultFormat } from "./quizRoom.reducer";
-import { QuizFormat } from "../../utils/firebase.utils";
+import { QuizFormat, EditableQuizFormat } from "../../utils/firebase.utils";
 
-export type SetQuizTakerName = ActionWithPayload<QUIZ_ROOM_TYPES.SET_QUIZ_TAKER_NAME, string>
+export type SetQuizTakerName = ActionWithPayload<
+  QUIZ_ROOM_TYPES.SET_QUIZ_TAKER_NAME,
+  string
+>;
 
-export const setQuizTakerName = withMatcher((value:string)=>{
-    return createAction(QUIZ_ROOM_TYPES.SET_QUIZ_TAKER_NAME, value)
-})
+export const setQuizTakerName = withMatcher((value: string) => {
+  return createAction(QUIZ_ROOM_TYPES.SET_QUIZ_TAKER_NAME, value);
+});
 
 export type SetCheckedValueInEditableArray = ActionWithPayload<
   QUIZ_ROOM_TYPES.EDIT_QUESTION_ARRAY_FOR_CHECKING_ANSWER,
-  QuizFormat
+  EditableQuizFormat
 >;
 
-export const setCheckedValueInEditableArray = withMatcher((
-  value: QuizFormat & {checked:string} & {questionArrayNumber:string}
-): SetCheckedValueInEditableArray => {
-  return createAction(
-    QUIZ_ROOM_TYPES.EDIT_QUESTION_ARRAY_FOR_CHECKING_ANSWER,
-    value
-  );
-});
+export const setCheckedValueInEditableArray = withMatcher(
+  (value: EditableQuizFormat): SetCheckedValueInEditableArray => {
+    return createAction(
+      QUIZ_ROOM_TYPES.EDIT_QUESTION_ARRAY_FOR_CHECKING_ANSWER,
+      value
+    );
+  }
+);
 export type SetOriginalQuestionArray = ActionWithPayload<
   QUIZ_ROOM_TYPES.SET_ORIGINAL_ARRAY,
   QuizFormat[]
 >;
 
-export const setOriginalQuestionArray =withMatcher( (
-  value: QuizFormat[]
-): SetOriginalQuestionArray => {
-  return createAction(QUIZ_ROOM_TYPES.SET_ORIGINAL_ARRAY, value);
+export const setOriginalQuestionArray = withMatcher(
+  (value: QuizFormat[]): SetOriginalQuestionArray => {
+    return createAction(QUIZ_ROOM_TYPES.SET_ORIGINAL_ARRAY, value);
+  }
+);
+
+export type GetQuestionsFromDbStart = ActionWithPayload<
+  QUIZ_ROOM_TYPES.GET_QUESTIONS_FROM_DB_START,
+  string
+>;
+
+export const getQuestionsFromDbStart =withMatcher( (
+  value: string
+): GetQuestionsFromDbStart => {
+  return createAction(QUIZ_ROOM_TYPES.GET_QUESTIONS_FROM_DB_START, value);
 });
-
-export type GetQuestionsFromDbStart =
-  Action<QUIZ_ROOM_TYPES.GET_QUESTIONS_FROM_DB_START>;
-
-export const getQuestionsFromDbStart = (): GetQuestionsFromDbStart => {
-  return createAction(QUIZ_ROOM_TYPES.GET_QUESTIONS_FROM_DB_START);
-};
 
 export type GetQuestionsFromDbSuccess =
   Action<QUIZ_ROOM_TYPES.GET_QUESTIONS_FROM_DB_SUCCESS>;
@@ -57,11 +64,11 @@ export type GetQuestionsFromDbFailed = ActionWithPayload<
   Error
 >;
 
-export const getQuestionsFromDbFailed =withMatcher( (
-  error: Error
-): GetQuestionsFromDbFailed => {
-  return createAction(QUIZ_ROOM_TYPES.GET_QUESTIONS_FROM_DB_FAILED, error);
-});
+export const getQuestionsFromDbFailed = withMatcher(
+  (error: Error): GetQuestionsFromDbFailed => {
+    return createAction(QUIZ_ROOM_TYPES.GET_QUESTIONS_FROM_DB_FAILED, error);
+  }
+);
 
 export type UploadQuizResultToOwnerDbStart = ActionWithPayload<
   QUIZ_ROOM_TYPES.UPLOAD_QUIZ_RESULT_TO_OWNER_DB_START,

@@ -4,6 +4,7 @@ import { QUIZ_ROOM_TYPES } from "./quizRoom.types";
 import {
   GetQuestionsFromDbStart,
   setOriginalQuestionArray,
+  getQuestionsFromDbSuccess,
 } from "./quizRoom.action";
 
 export function* getQuestionsFromDbStart({ payload }: GetQuestionsFromDbStart) {
@@ -18,6 +19,7 @@ export function* getQuestionsFromDbStart({ payload }: GetQuestionsFromDbStart) {
       const sortedData = entries.map((item) => item[1]);
 
       yield* put(setOriginalQuestionArray(sortedData));
+      yield* put(getQuestionsFromDbSuccess())
     }
   } catch (error) {
     console.log(error);

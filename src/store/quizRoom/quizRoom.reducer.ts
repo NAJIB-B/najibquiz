@@ -5,6 +5,9 @@ import {
   setOriginalQuestionArray,
   setCheckedValueInEditableArray,
   getQuestionsFromDbStart,
+  getQuestionsFromDbSuccess,
+  addCurrentArrayNumber,
+  reduceCurrentArrayNumber,
 } from "./quizRoom.action";
 import { AnyAction } from "redux";
 export type QuizResultFormat = {
@@ -17,6 +20,8 @@ export type QuizRoomState = {
   readonly editableQuizArray: EditableQuizFormat[];
   readonly error: Error | null;
   readonly isLoading: boolean;
+  readonly currentArrayNumber: number;
+  readonly checkedValue: string;
 };
 const INITIAL_STATE: QuizRoomState = {
   originalQuizArray: [],
@@ -24,6 +29,8 @@ const INITIAL_STATE: QuizRoomState = {
   error: null,
   editableQuizArray: [],
   isLoading: false,
+  currentArrayNumber: 0,
+  checkedValue: "",
 };
 
 export const quizRoomReducer = (state = INITIAL_STATE, action: AnyAction) => {
@@ -32,6 +39,15 @@ export const quizRoomReducer = (state = INITIAL_STATE, action: AnyAction) => {
   }
   if (getQuestionsFromDbStart.match(action)) {
     return { ...state, isLoading: true };
+  }
+  if (getQuestionsFromDbSuccess.match(action)) {
+    return { ...state, isLoading: false };
+  }
+  if (addCurrentArrayNumber.match(action)) {
+    return { ...state, currentArrayNumber: state.currentArrayNumber + 1 };
+  }
+  if (reduceCurrentArrayNumber.match(action)) {
+    return { ...state, currentArrayNumber: state.currentArrayNumber - 1 };
   }
   if (setOriginalQuestionArray.match(action)) {
     return {

@@ -20,4 +20,8 @@ export const selectCurrentArrayNumber = createSelector(
   [selectQuizRoomReducers],
   (num) => num.currentArrayNumber
 );
+export const selectCheckedValue = createSelector(
+  [selectQuizRoomReducers],
+  (value) => value.checkedValue
+);
 

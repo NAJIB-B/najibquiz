@@ -1,8 +1,13 @@
 import { EditableQuizFormat, QuizFormat } from "../utils/firebase.utils";
-import { MouseEvent } from "react";
+import { MouseEvent, ChangeEvent } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import {
+  setCheckedValue,
+  setCheckedValueInEditableArray,
+} from "../store/quizRoom/quizRoom.action";
+import {
+  selectCheckedValue,
   selectCurrentArrayNumber,
   selectEditableQuizArray,
 } from "../store/quizRoom/quizRoom.selector";
@@ -15,13 +20,28 @@ type QuizQuestionContainerPropsType = {
 };
 
 const QuizQuestionContainer = ({ qa }: QuizQuestionContainerPropsType) => {
-  const { question, questionNumber, option1, option2, option3, option4 } = qa;
+  const {
+    question,
+    questionNumber,
+    option1,
+    option2,
+    option3,
+    option4,
+    checked,
+  } = qa;
   const dispatch = useDispatch();
   const currentArrayNumber = useSelector(selectCurrentArrayNumber);
   const editableQuizArray = useSelector(selectEditableQuizArray);
+  const checkedValue = useSelector(selectCheckedValue);
 
-  const checkOption = (e: MouseEvent<HTMLInputElement>) => {
+  const checkOption = (e: ChangeEvent<HTMLInputElement>) => {
     const value = (e.target as HTMLInputElement).value;
+    dispatch(
+      setCheckedValueInEditableArray({
+        checked: value,
+        questionArrayNumber: currentArrayNumber,
+      })
+    );
   };
 
   const back = () => {
@@ -39,7 +59,8 @@ const QuizQuestionContainer = ({ qa }: QuizQuestionContainerPropsType) => {
           type="radio"
           value={option1}
           name="option"
-          onClick={checkOption}
+          onChange={checkOption}
+          checked={checked === option1}
         />
         <label>{option1}</label>
         <br />
@@ -47,7 +68,8 @@ const QuizQuestionContainer = ({ qa }: QuizQuestionContainerPropsType) => {
           type="radio"
           value={option2}
           name="option"
-          onClick={checkOption}
+          onChange={checkOption}
+          checked={checked === option2}
         />
         <label>{option2}</label>
         <br />
@@ -55,7 +77,8 @@ const QuizQuestionContainer = ({ qa }: QuizQuestionContainerPropsType) => {
           type="radio"
           value={option3}
           name="option"
-          onClick={checkOption}
+          onChange={checkOption}
+          checked={checked === option3}
         />
         <label>{option3}</label>
         <br />
@@ -63,7 +86,8 @@ const QuizQuestionContainer = ({ qa }: QuizQuestionContainerPropsType) => {
           type="radio"
           value={option4}
           name="option"
-          onClick={checkOption}
+          onChange={checkOption}
+          checked={checked === option4}
         />
         <label>{option4}</label>
         <br />

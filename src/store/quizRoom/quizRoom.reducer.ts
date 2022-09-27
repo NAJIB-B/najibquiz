@@ -8,6 +8,7 @@ import {
   getQuestionsFromDbSuccess,
   addCurrentArrayNumber,
   reduceCurrentArrayNumber,
+  setCheckedValue,
 } from "./quizRoom.action";
 import { AnyAction } from "redux";
 export type QuizResultFormat = {
@@ -40,6 +41,9 @@ export const quizRoomReducer = (state = INITIAL_STATE, action: AnyAction) => {
   if (getQuestionsFromDbStart.match(action)) {
     return { ...state, isLoading: true };
   }
+  if (setCheckedValue.match(action)) {
+    return { ...state, checkedValue: action.payload };
+  }
   if (getQuestionsFromDbSuccess.match(action)) {
     return { ...state, isLoading: false };
   }
@@ -58,12 +62,13 @@ export const quizRoomReducer = (state = INITIAL_STATE, action: AnyAction) => {
   }
   if (setCheckedValueInEditableArray.match(action)) {
     const { questionArrayNumber, checked } = action.payload;
-    const newArray = cloneDeep(state.editableQuizArray);
-    if (questionArrayNumber) {
-      newArray[questionArrayNumber].checked = checked;
-    }
-
-    return { ...state, editableQuizArray: newArray };
+   
+    return {
+      ...state,
+      editableQuizArray: state.editableQuizArray.map((item, i) =>
+        i === questionArrayNumber ? { ...item, checked: checked } : item
+      ),
+    };
   }
 
   return state;

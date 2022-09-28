@@ -18,10 +18,20 @@ export const selectIsLoading = createSelector(
 );
 export const selectCurrentArrayNumber = createSelector(
   [selectQuizRoomReducers],
-  (num) => num.currentArrayNumber
+  (num):number => num.currentArrayNumber
 );
 export const selectCheckedValue = createSelector(
   [selectQuizRoomReducers],
   (value) => value.checkedValue
+);
+
+export const selectQuizOwner = createSelector(
+  [selectQuizRoomReducers],
+  (value) => value.quizOwner
+);
+
+export const selectQuizId = createSelector(
+  [selectQuizRoomReducers],
+  (value) => value.quizId
 );
 

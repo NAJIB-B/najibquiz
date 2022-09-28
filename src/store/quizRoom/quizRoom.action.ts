@@ -62,6 +62,19 @@ export type SetCheckedValue = ActionWithPayload<
 export const setCheckedValue = withMatcher((value: string): SetCheckedValue => {
   return createAction(QUIZ_ROOM_TYPES.SET_CHECKED_VALUE, value);
 });
+export type SetQuizOwner = ActionWithPayload<
+  QUIZ_ROOM_TYPES.SET_QUIZ_OWNER,
+  string
+>;
+
+export const setQuizOwner = withMatcher((value: string): SetQuizOwner => {
+  return createAction(QUIZ_ROOM_TYPES.SET_QUIZ_OWNER, value);
+});
+export type SetQuizId = ActionWithPayload<QUIZ_ROOM_TYPES.SET_QUIZ_ID, string>;
+
+export const setQuizId = withMatcher((value: string): SetQuizId => {
+  return createAction(QUIZ_ROOM_TYPES.SET_QUIZ_ID, value);
+});
 
 export type GetQuestionsFromDbStart = ActionWithPayload<
   QUIZ_ROOM_TYPES.GET_QUESTIONS_FROM_DB_START,
@@ -99,22 +112,22 @@ export type UploadQuizResultToOwnerDbStart = ActionWithPayload<
   QuizResultFormat
 >;
 
-export const uploadQuizResultToOwnerDbStart = (
+export const uploadQuizResultToOwnerDbStart = withMatcher((
   value: QuizResultFormat
 ): UploadQuizResultToOwnerDbStart => {
   return createAction(
     QUIZ_ROOM_TYPES.UPLOAD_QUIZ_RESULT_TO_OWNER_DB_START,
     value
   );
-};
+});
 
 export type UploadQuizResultToOwnerDbSuccess =
   Action<QUIZ_ROOM_TYPES.UPLOAD_QUIZ_RESULT_TO_OWNER_DB_SUCCESS>;
 
-export const uploadQuizResultToOwnerDbSuccess =
+export const uploadQuizResultToOwnerDbSuccess =withMatcher(
   (): UploadQuizResultToOwnerDbSuccess => {
     return createAction(QUIZ_ROOM_TYPES.UPLOAD_QUIZ_RESULT_TO_OWNER_DB_SUCCESS);
-  };
+  });
 
 export type UploadQuizResultToOwnerDbFailed = ActionWithPayload<
   QUIZ_ROOM_TYPES.UPLOAD_QUIZ_RESULT_TO_OWNER_DB_FAILED,

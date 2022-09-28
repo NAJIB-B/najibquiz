@@ -22,6 +22,7 @@ import {
 import { generatePassword } from "./helper";
 import { QuizObject, QuizMainObject } from "../store/quiz/quiz.reducer";
 import { StringLiteralLike } from "typescript";
+import { QuizResultFormat } from "../store/quizRoom/quizRoom.reducer";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBpkwaI02ylEJU63fP1YWi1gdg2uaLCQZ8",
@@ -171,12 +172,25 @@ export const uploadQuizToUserDataBase = async (quiz: UserQuizObject) => {
   }
 };
 
-export const getAQuizFromDb = async (
-  quizId: string
-) => {
+export const getAQuizFromDb = async (quizId: string) => {
   const quizDocRef = doc(db, "AllQuiz", quizId);
   const quizSnapshot = await getDoc(quizDocRef);
- return quizSnapshot  as DocumentSnapshot<QuizMainObject>
+  return quizSnapshot as DocumentSnapshot<QuizMainObject>;
+};
+
+export const uploadQuizResultToOwner = async (quiz: QuizResultFormat) => {
+  const { quizOwner, name, score, quizId } = quiz;
+  const userDocRef = doc(db, "users", quizOwner);
+  const data = {
+    quiz: {
+      [quizId]: { quizData: { name, score } },
+    },
+  };
+  try {
+    await setDoc(userDocRef, data, { merge: true });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export type QuizFormat = {

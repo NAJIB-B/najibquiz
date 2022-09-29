@@ -20,19 +20,19 @@ const Home = () => {
     dispatch(checkUserSession());
   }, []);
   const login = () => {
-    navigate("/login");
+    navigate("login");
   };
   const signUp = () => {
-    navigate("/signUp");
+    navigate("signUp");
   };
   const quiz = () => {
-    navigate("/quiz");
+    navigate("quiz");
   };
   const signOut = () => {
     dispatch(signOutStart());
   };
   const profile = () => {
-    navigate("/profile");
+    navigate("profile");
   };
   return (
     <>
@@ -51,7 +51,6 @@ const Home = () => {
 
         <button onClick={quiz}> quiz</button>
       </HomeDiv>
-      <Outlet></Outlet>
     </>
   );
 };

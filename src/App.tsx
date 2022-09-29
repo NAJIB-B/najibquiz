@@ -12,15 +12,14 @@ import "./App.css";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home></Home>}>
-        <Route path="/login" element={<Login></Login>}></Route>
-        <Route path="/signUp" element={<SignUp></SignUp>}></Route>
+      <Route path="/" element={<Home></Home>}></Route>
+      <Route path="login" element={<Login></Login>}></Route>
+      <Route path="signUp" element={<SignUp></SignUp>}></Route>
 
-        <Route path="/profile" element={<Profile></Profile>}></Route>
+      <Route path="profile" element={<Profile></Profile>}></Route>
 
-        <Route path="/quiz/*" element={<Quiz></Quiz>}></Route>
-        <Route path="/quizRoom/*" element={<QuizRoom></QuizRoom>}></Route>
-      </Route>
+      <Route path="quiz/*" element={<Quiz></Quiz>}></Route>
+      <Route path="quizRoom/*" element={<QuizRoom></QuizRoom>}></Route>
     </Routes>
   );
 }

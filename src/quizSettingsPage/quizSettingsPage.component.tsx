@@ -3,7 +3,6 @@ import {
   setQuestionNumber,
   setQuizName,
   finishSettingQuestion,
-
 } from "../store/quiz/quiz.action";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -14,6 +13,7 @@ const defaultFormFields = {
 const QuizSettingsPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { questionNumber, quizName } = formFields;
 

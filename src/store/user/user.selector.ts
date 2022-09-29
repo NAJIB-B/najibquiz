@@ -7,3 +7,7 @@ export const selectUserUid = createSelector(
   [selectUserReducer],
   (user) => user.userUid
 );
+export const selectCurrentUser = createSelector(
+  [selectUserReducer],
+  (user) => user.currentUser
+);

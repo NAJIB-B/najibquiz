@@ -6,6 +6,7 @@ import Home from "./home/home.component";
 import SignUp from "./sign-up/sign-up.component";
 import Quiz from "./quiz/quiz.component";
 import QuizRoom from "./quizRoom/quizRoom.component";
+import Profile from "./profile/profile.component";
 import "./App.css";
 
 function App() {
@@ -14,8 +15,10 @@ function App() {
       <Route path="/" element={<Home></Home>}>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signUp" element={<SignUp></SignUp>}></Route>
-        <Route path="/quiz/*" element={<Quiz></Quiz>}></Route>
 
+        <Route path="/profile" element={<Profile></Profile>}></Route>
+
+        <Route path="/quiz/*" element={<Quiz></Quiz>}></Route>
         <Route path="/quizRoom/*" element={<QuizRoom></QuizRoom>}></Route>
       </Route>
     </Routes>

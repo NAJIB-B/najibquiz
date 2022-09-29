@@ -35,6 +35,7 @@ export function* getSnapshotFromUserAuth(
       additionalDetails
     );
     if (userSnapshot) {
+      console.log(userSnapshot.data());
       yield* put(
         signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() })
       );
@@ -48,6 +49,7 @@ export function* signInWithGoogle() {
   try {
     const { user } = yield* call(signInWithGooglepopup);
     yield* call(getSnapshotFromUserAuth, user);
+    console.log("done", user);
   } catch (error) {
     yield* put(signInFailed(error as Error));
   }
@@ -77,6 +79,7 @@ export function* isUserAuthenticated() {
     const userAuth = yield* call(getCurrentUser);
 
     if (!userAuth) return;
+
     yield put(userUid(userAuth.uid));
     yield* call(getSnapshotFromUserAuth, userAuth);
   } catch (error) {
@@ -150,4 +153,3 @@ export function* userSaga() {
     call(onSignOutStart),
   ]);
 }
-

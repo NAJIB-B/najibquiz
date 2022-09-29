@@ -52,11 +52,27 @@ export const signOutUser = () => {
 export type AdditionalInformation = {
   displayName?: string;
 };
+export type InnerQuizData = {
+  name: string;
+  score: number;
+};
+export type QuizData = {
+  [key: string]: InnerQuizData;
+};
+export type InnerUserQuiz = {
+  id: string;
+  quizName: string;
+  quizData?: QuizData;
+};
+export type UserQuiz = {
+  [key: string]: InnerQuizData;
+};
 
 export type UserData = {
   createdAt: Date;
   displayName: string;
   email: string;
+  quiz?: UserQuiz;
 };
 
 export const createUserDocumentFromAuth = async (
@@ -164,7 +180,7 @@ export const uploadQuizToUserDataBase = async (quiz: UserQuizObject) => {
       [id]: { id, quizName },
     },
   };
-
+console.log(data)
   try {
     await setDoc(userDocRef, data, { merge: true });
   } catch (error) {
@@ -181,16 +197,25 @@ export const getAQuizFromDb = async (quizId: string) => {
 export const uploadQuizResultToOwner = async (quiz: QuizResultFormat) => {
   const { quizOwner, name, score, quizId } = quiz;
   const userDocRef = doc(db, "users", quizOwner);
-  const data = {
-    quiz: {
-      [quizId]: { quizData: { name, score } },
-    },
-  };
-  try {
-    await setDoc(userDocRef, data, { merge: true });
-  } catch (error) {
-    console.log(error);
+  if (name) {
+    const data = {
+      quiz: {
+        [quizId]: { quizData: { [name]: { name, score } } },
+      },
+    };
+    try {
+      await setDoc(userDocRef, data, { merge: true });
+    } catch (error) {
+      console.log(error);
+    }
   }
+};
+
+export const getPorfileQuizData = async (uid: string) => { 
+  const userDocRef = doc(db, "users", uid);
+  const userSnapshot = await getDoc(userDocRef);
+
+  return userSnapshot as DocumentSnapshot<UserData>;
 };
 
 export type QuizFormat = {

@@ -17,6 +17,7 @@ export function* uploadQuestions({ payload }: UploadQuizQuestionStart) {
   const quiz = { id, quizName, quizOwner };
   try {
     const uploadedQuiz = yield* call(uploadABatchOfQuizQuestions, payload);
+    console.log(quiz);
     yield* call(uploadQuizToUserDataBase, quiz);
   } catch (error) {
     console.log(error);
@@ -33,3 +34,18 @@ export function* onUploadQuizQuestionStart() {
 export function* quizSaga() {
   yield* all([call(onUploadQuizQuestionStart)]);
 }
+// type People={
+// name:string;
+// age:number;
+// height:string;
+// }
+// const peopleArray:People[] = [{
+//   name: "john doe",
+//   age: 16,
+//   height: "1.7m"
+// },
+// {
+//   name: "mohn moe",
+//   age: 18,
+//   height: "1.9m"
+// }]

@@ -15,17 +15,25 @@ export const ModalContainerDiv = styled.div`
   place-items: center;
   z-index: 12;
   border-radius: 25px;
-  @media (max-width: 360px) {
-    width: 15rem;
+  @media (max-width: 900px) {
+    width: 30rem;
+    height: 20rem;
+  }
+  @media (max-width: 560px) {
+    width: 25rem;
+    height: 17rem;
+  }
+  @media (max-width: 450px) {
+    width: 20rem;
     height: 15rem;
   }
-  @media (max-width: 270px) {
-    width: 12rem;
-    height: 12rem;
+  @media (max-width: 335px) {
+    width: 17rem;
+    height: 13rem;
   }
-  @media (max-width: 220px) {
-    width: 10rem;
-    height: 10rem;
+  @media (max-width: 300px) {
+    width: 15rem;
+    height: 11rem;
   }
 `;
 export const Overlay = styled.div`
@@ -43,13 +51,13 @@ export const Overlay = styled.div`
 export const Message = styled.span`
   color: white;
   font-size: 2rem;
-  @media (max-width: 360px) {
+  @media (max-width: 900px) {
     font-size: 1.5rem;
   }
-  @media (max-width: 270px) {
-    font-size: 1.3rem;
+  @media (max-width: 550px) {
+    font-size: 1.2rem;
   }
-  @media (max-width: 220px) {
+  @media (max-width: 450px) {
     font-size: 1rem;
   }
 `;
@@ -60,11 +68,19 @@ export const QuizLink = styled.span`
   padding: 1rem;
   border-radius: 18px;
 
-  @media (max-width: 270px) {
-    font-size: 1.3rem;
+  @media (max-width: 900px) {
+    font-size: 1.2rem;
   }
-  @media (max-width: 220px) {
+  @media (max-width: 560px) {
     font-size: 1rem;
+  }
+  @media (max-width: 450px) {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+  @media (max-width: 300px) {
+    font-size: 0.6rem;
+    padding: 0.3rem;
   }
 `;
 export const CloseBtn = styled.span`
@@ -78,13 +94,22 @@ export const CloseBtn = styled.span`
   background-color: #33cc36;
   border-radius: 45%;
   cursor: pointer;
-  @media (max-width: 370px) {
-    font-size: 1.5rem;
+  @media (max-width: 900px) {
+    font-size: 1.2rem;
+    right: 1rem;
   }
-  @media (max-width: 270px) {
-    font-size: 1.3rem;
-  }
-  @media (max-width: 220px) {
+  @media (max-width: 560px) {
     font-size: 1rem;
+    padding: 0.7rem;
+  }
+  @media (max-width: 450px) {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+  @media (max-width: 300px) {
+    font-size: 0.6rem;
+    padding: 0.2rem;
+    right: 0.5rem;
+    top: 0.5rem;
   }
 `;

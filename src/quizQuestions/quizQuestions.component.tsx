@@ -2,6 +2,14 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState, ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../spinner/spinner.component";
+import { LoginDiv, FormFieldLabels, FormInputs } from "../login/login.style";
+import {
+  Circles,
+  CirclesLi,
+  Area,
+  SignUpBtn,
+  LogOutBtn,
+} from "../home/home.style";
 import {
   selectCurrentArrayNumber,
   selectEditableQuizArray,
@@ -14,6 +22,7 @@ import {
   setQuizTakerName,
 } from "../store/quizRoom/quizRoom.action";
 import { EditableQuizFormat } from "../utils/firebase.utils";
+
 const defaultFormFields = {
   quizTakerName: "",
 };
@@ -44,6 +53,10 @@ const QuizQuestions = () => {
   const questionToShow = editableQuestionsArray[currnetArrayNumber];
 
   const startQuiz = () => {
+    if (!quizTakerName.trim()) {
+      alert("Please input your name before you proceed");
+      return;
+    }
     dispatch(setQuizTakerName(quizTakerName));
   };
 
@@ -57,16 +70,36 @@ const QuizQuestions = () => {
             <QuizQuestionContainer qa={questionToShow}></QuizQuestionContainer>
           ) : (
             <>
-              <input
-                type="text"
-                name="quizTakerName"
-                placeholder="what's your name"
-                onChange={change}
-                value={quizTakerName}
-                required
-              />
-              <button onClick={startQuiz}>Start quiz</button>
-              <h1>QuizSettingsPage</h1>
+              <Area>
+                <LoginDiv>
+                  <FormFieldLabels>What's your name :</FormFieldLabels>
+                  <br />
+                  <FormInputs
+                    type="text"
+                    name="quizTakerName"
+                    placeholder="e.g john doe"
+                    onChange={change}
+                    value={quizTakerName}
+                    required
+                  />
+                  <br />
+                  <br />
+                  <SignUpBtn onClick={startQuiz}>Start quiz</SignUpBtn>
+                </LoginDiv>
+
+                <Circles>
+                  <CirclesLi></CirclesLi>
+                  <CirclesLi></CirclesLi>
+                  <CirclesLi></CirclesLi>
+                  <CirclesLi></CirclesLi>
+                  <CirclesLi></CirclesLi>
+                  <CirclesLi></CirclesLi>
+                  <CirclesLi></CirclesLi>
+                  <CirclesLi></CirclesLi>
+                  <CirclesLi></CirclesLi>
+                  <CirclesLi></CirclesLi>
+                </Circles>
+              </Area>
             </>
           )}
         </>

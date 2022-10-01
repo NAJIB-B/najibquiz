@@ -3,6 +3,7 @@ import { getPorfileQuizData } from "../../utils/firebase.utils";
 import {
   GetProfileQuizDataStart,
   getProfileQuizDataSuccess,
+  setQuiz,
 } from "./profile.action";
 
 import { USER_PROFILE_TYPES } from "./profile.types";
@@ -12,8 +13,12 @@ export function* getProfileQuizDataInSaga({
 }: GetProfileQuizDataStart) {
   try {
     const user = yield* call(getPorfileQuizData, payload);
-    console.log(user.data()?.quiz);
-    yield* put(getProfileQuizDataSuccess("yes"));
+    const mainObject = user.data()?.quiz;
+    console.log(mainObject);
+    yield* put(getProfileQuizDataSuccess());
+    if (mainObject) {
+      yield* put(setQuiz(mainObject));
+    }
   } catch (error) {
     console.log(error);
   }

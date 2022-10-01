@@ -65,7 +65,7 @@ export type InnerUserQuiz = {
   quizData?: QuizData;
 };
 export type UserQuiz = {
-  [key: string]: InnerQuizData;
+  [key: string]: InnerUserQuiz;
 };
 
 export type UserData = {
@@ -180,7 +180,7 @@ export const uploadQuizToUserDataBase = async (quiz: UserQuizObject) => {
       [id]: { id, quizName },
     },
   };
-console.log(data)
+  console.log(data);
   try {
     await setDoc(userDocRef, data, { merge: true });
   } catch (error) {
@@ -211,7 +211,7 @@ export const uploadQuizResultToOwner = async (quiz: QuizResultFormat) => {
   }
 };
 
-export const getPorfileQuizData = async (uid: string) => { 
+export const getPorfileQuizData = async (uid: string) => {
   const userDocRef = doc(db, "users", uid);
   const userSnapshot = await getDoc(userDocRef);
 

@@ -11,3 +11,11 @@ export const selectCurrentUser = createSelector(
   [selectUserReducer],
   (user) => user.currentUser
 );
+export const selectBackToHome = createSelector(
+  [selectUserReducer],
+  (value) => value.backToHome
+);
+export const selectIsLoading = createSelector(
+  [selectUserReducer],
+  (value) => value.isLoading
+);

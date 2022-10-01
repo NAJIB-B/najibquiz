@@ -34,4 +34,8 @@ export const selectQuizId = createSelector(
   [selectQuizRoomReducers],
   (value) => value.quizId
 );
+export const selectDoneWithQuiz = createSelector(
+  [selectQuizRoomReducers],
+  (value) => value.doneWithQuiz
+);
 

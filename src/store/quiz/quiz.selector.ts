@@ -24,5 +24,17 @@ export const selectQuizName = createSelector(
   [selectQuizReducers],
   (quiz) => quiz.quizName
 );
+export const selectIsLoading = createSelector(
+  [selectQuizReducers],
+  (load) => load.isLoading
+);
+export const selectQuizSuccess = createSelector(
+  [selectQuizReducers],
+  (value) => value.quizSuccess
+);
+export const selectQuizId = createSelector(
+  [selectQuizReducers],
+  (value) => value.quizId
+);
 
 

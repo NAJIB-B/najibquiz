@@ -13,6 +13,7 @@ import {
   setQuizOwner,
   setQuizId,
   uploadQuizResultToOwnerDbSuccess,
+  resetQuizRoom,
 } from "./quizRoom.action";
 import { AnyAction } from "redux";
 export type QuizResultFormat = {
@@ -31,6 +32,7 @@ export type QuizRoomState = {
   readonly checkedValue: string;
   readonly quizOwner: string;
   readonly quizId: string;
+  readonly doneWithQuiz: boolean;
 };
 const INITIAL_STATE: QuizRoomState = {
   originalQuizArray: [],
@@ -42,6 +44,7 @@ const INITIAL_STATE: QuizRoomState = {
   checkedValue: "",
   quizOwner: "",
   quizId: "",
+  doneWithQuiz: false,
 };
 
 export const quizRoomReducer = (state = INITIAL_STATE, action: AnyAction) => {
@@ -67,13 +70,30 @@ export const quizRoomReducer = (state = INITIAL_STATE, action: AnyAction) => {
     return { ...state, isLoading: false };
   }
   if (uploadQuizResultToOwnerDbSuccess.match(action)) {
-    return { ...state, isLoading: false };
+    console.log('done')
+    return { ...state, isLoading: false,   doneWithQuiz: true};
   }
+ 
   if (addCurrentArrayNumber.match(action)) {
     return { ...state, currentArrayNumber: state.currentArrayNumber + 1 };
   }
   if (reduceCurrentArrayNumber.match(action)) {
     return { ...state, currentArrayNumber: state.currentArrayNumber - 1 };
+  }
+  if (resetQuizRoom.match(action)) {
+    return {
+      ...state,
+      originalQuizArray: [],
+      quizTakerName: null,
+      error: null,
+      editableQuizArray: [],
+      isLoading: false,
+      currentArrayNumber: 0,
+      checkedValue: "",
+      quizOwner: "",
+      quizId: "",
+      doneWithQuiz: false,
+    };
   }
   if (setOriginalQuestionArray.match(action)) {
     return {

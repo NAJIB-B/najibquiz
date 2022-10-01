@@ -6,6 +6,7 @@ import {
   signOutSuccess,
   signInSuccess,
   userUid,
+  setBackToHome,
 } from "./user.action";
 import { AnyAction } from "redux";
 export type UserState = {
@@ -13,12 +14,14 @@ export type UserState = {
   readonly isLoading: Boolean;
   readonly error: Error | null;
   readonly userUid: string | null;
+  readonly backToHome: boolean;
 };
 const INITIAL_STATE: UserState = {
   currentUser: null,
   isLoading: false,
   error: null,
   userUid: null,
+  backToHome:false,
 };
 
 export const userReducer = (state = INITIAL_STATE, action: AnyAction) => {
@@ -30,6 +33,9 @@ export const userReducer = (state = INITIAL_STATE, action: AnyAction) => {
   }
   if (signOutSuccess.match(action)) {
     return { ...state, currentUser: null };
+  }
+  if (setBackToHome.match(action)) {
+    return { ...state, backToHome: action.payload };
   }
   if (userUid.match(action)) {
     return { ...state, userUid: action.payload };

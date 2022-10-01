@@ -41,6 +41,14 @@ export type SignUpFailed = ActionWithPayload<
   USER_ACTION_TYPES.SIGN_UP_FAILED,
   Error
 >;
+export type SetBackToHome = ActionWithPayload<
+  USER_ACTION_TYPES.SET_BACK_T0_HOME,
+  boolean
+>;
+export type SetisLoading = ActionWithPayload<
+  USER_ACTION_TYPES.SET_IS_LOADING,
+  boolean
+>;
 
 export const checkUserSession = withMatcher((): CheckUserSession => {
   return createAction(USER_ACTION_TYPES.CHECK_USER_SESSION);
@@ -109,10 +117,15 @@ export const signOutFailed = withMatcher((error: Error): SignOutFailed => {
   return createAction(USER_ACTION_TYPES.SIGN_OUT_FAILED, error);
 });
 
-export type UserUid=ActionWithPayload<USER_ACTION_TYPES.USER_UID, string>
+export type UserUid = ActionWithPayload<USER_ACTION_TYPES.USER_UID, string>;
 
-
-export const userUid =withMatcher( (value:string): UserUid=>{
-  return createAction(USER_ACTION_TYPES.USER_UID, value)
+export const userUid = withMatcher((value: string): UserUid => {
+  return createAction(USER_ACTION_TYPES.USER_UID, value);
 });
 
+export const setBackToHome = withMatcher((value: boolean): SetBackToHome => {
+  return createAction(USER_ACTION_TYPES.SET_BACK_T0_HOME, value);
+});
+export const setisLoading = withMatcher((value: boolean): SetisLoading => {
+  return createAction(USER_ACTION_TYPES.SET_IS_LOADING, value);
+});

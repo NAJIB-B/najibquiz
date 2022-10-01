@@ -1,3 +1,4 @@
+import { UserQuiz } from "../../utils/firebase.utils";
 import {
   Action,
   ActionWithPayload,
@@ -11,20 +12,18 @@ export type GetProfileQuizDataStart = ActionWithPayload<
   string
 >;
 export const getProfileQuizDataStart = withMatcher(
-  (uid:string): GetProfileQuizDataStart => {
-    return createAction(USER_PROFILE_TYPES.GET_USER_PROFILE_QUIZ_DATA_START, uid);
+  (uid: string): GetProfileQuizDataStart => {
+    return createAction(
+      USER_PROFILE_TYPES.GET_USER_PROFILE_QUIZ_DATA_START,
+      uid
+    );
   }
 );
-export type GetProfileQuizDataSuccess = ActionWithPayload<
-  USER_PROFILE_TYPES.GET_USER_PROFILE_QUIZ_DATA_SUCCESS,
-  string
->;
+export type GetProfileQuizDataSuccess =
+  Action<USER_PROFILE_TYPES.GET_USER_PROFILE_QUIZ_DATA_SUCCESS>;
 export const getProfileQuizDataSuccess = withMatcher(
-  (value: string): GetProfileQuizDataSuccess => {
-    return createAction(
-      USER_PROFILE_TYPES.GET_USER_PROFILE_QUIZ_DATA_SUCCESS,
-      value
-    );
+  (): GetProfileQuizDataSuccess => {
+    return createAction(USER_PROFILE_TYPES.GET_USER_PROFILE_QUIZ_DATA_SUCCESS);
   }
 );
 export type GetProfileQuizDataFailed = ActionWithPayload<
@@ -39,3 +38,10 @@ export const getProfileQuizDataFailed = withMatcher(
     );
   }
 );
+export type SetQuiz = ActionWithPayload<
+  USER_PROFILE_TYPES.SET_MAIN_OBJECT,
+  UserQuiz
+>;
+export const setQuiz = withMatcher((value: UserQuiz): SetQuiz => {
+  return createAction(USER_PROFILE_TYPES.SET_MAIN_OBJECT, value);
+});

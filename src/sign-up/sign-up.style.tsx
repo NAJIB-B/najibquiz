@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SignUpPageDiv = styled.div`
-  background-color: rgba(152, 68, 183, 1);
+  background-color: #8a3ffc;
 
   width: 100%;
   min-height: 100vh;

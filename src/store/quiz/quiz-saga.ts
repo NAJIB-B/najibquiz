@@ -1,8 +1,10 @@
 import { takeLatest, put, all, call } from "typed-redux-saga/macro";
 import { QUIZ_ACTION_TYPES } from "./quiz.types";
 import {
+  quizSuccessfullyCreated,
   SetQuestionNumber,
   setQuestionNumber,
+  setQuizId,
   UploadQuizQuestionStart,
   uploadQuizQuestionSuccess,
 } from "./quiz.action";
@@ -17,10 +19,12 @@ export function* uploadQuestions({ payload }: UploadQuizQuestionStart) {
   const quiz = { id, quizName, quizOwner };
   try {
     const uploadedQuiz = yield* call(uploadABatchOfQuizQuestions, payload);
-    console.log(quiz);
+    yield* put(setQuizId(id));
     yield* call(uploadQuizToUserDataBase, quiz);
+    yield* put(uploadQuizQuestionSuccess());
+    yield* put(quizSuccessfullyCreated());
   } catch (error) {
-    console.log(error);
+    alert("something went wrong please refresh and try again");
   }
 }
 
@@ -34,18 +38,3 @@ export function* onUploadQuizQuestionStart() {
 export function* quizSaga() {
   yield* all([call(onUploadQuizQuestionStart)]);
 }
-// type People={
-// name:string;
-// age:number;
-// height:string;
-// }
-// const peopleArray:People[] = [{
-//   name: "john doe",
-//   age: 16,
-//   height: "1.7m"
-// },
-// {
-//   name: "mohn moe",
-//   age: 18,
-//   height: "1.9m"
-// }]

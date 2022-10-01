@@ -1,11 +1,23 @@
 import styled from "styled-components";
+import { Icon } from "@iconify/react";
 
-
-
+export const GoogleIcon = styled(Icon)`
+  font-size: 2rem;
+  padding: 0 0.5rem;
+  @media (max-width: 660px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 420px) {
+    font-size: 1.2rem;
+  }
+  @media (max-width: 370px) {
+    font-size: 1rem;
+  }
+`;
 
 export const LoginDiv = styled.div`
   position: absolute;
-  top: 50%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
   border: 1px solid white;

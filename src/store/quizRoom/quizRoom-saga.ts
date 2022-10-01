@@ -36,13 +36,18 @@ export function* getQuestionsFromDbStart({ payload }: GetQuestionsFromDbStart) {
     }
   } catch (error) {
     console.log(error);
+    alert("please check your connection and try again");
   }
 }
 export function* uploadQuizResultToOwnerDb({
   payload,
 }: UploadQuizResultToOwnerDbStart) {
-  yield* call(uploadQuizResultToOwner, payload);
-  yield* put(uploadQuizResultToOwnerDbSuccess());
+  try {
+    yield* call(uploadQuizResultToOwner, payload);
+    yield* put(uploadQuizResultToOwnerDbSuccess());
+  } catch (error) {
+    alert("please check your connection and try again");
+  }
 }
 export function* onGetQuestionsFromDbStart() {
   yield* takeLatest(

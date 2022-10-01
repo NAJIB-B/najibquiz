@@ -28,8 +28,16 @@ export type UploadQuizQuestionStart = ActionWithPayload<
   QUIZ_ACTION_TYPES.UPLOAD_QUIZ_QUESTIONS_START,
   QuizMainObject
 >;
+export type SetQuizId = ActionWithPayload<
+  QUIZ_ACTION_TYPES.SET_QUIZ_ID,
+  string
+>;
 export type UploadQuizQuestionSuccess =
   Action<QUIZ_ACTION_TYPES.UPLOAD_QUIZ_QUESTIONS_SUCCESS>;
+export type QuizSuccessfullyCreated =
+  Action<QUIZ_ACTION_TYPES.QUIZ_SUCCESSFULLY_CREATED>;
+export type CloseModal =
+  Action<QUIZ_ACTION_TYPES.CLOSE_MODAL>;
 
 
 export const setQuestionNumber = withMatcher(
@@ -59,9 +67,24 @@ export const uploadQuizQuestionStart = withMatcher(
     return createAction(QUIZ_ACTION_TYPES.UPLOAD_QUIZ_QUESTIONS_START, value);
   }
 );
+export const setQuizId = withMatcher(
+  (value: string): SetQuizId => {
+    return createAction(QUIZ_ACTION_TYPES.SET_QUIZ_ID, value);
+  }
+);
 
 export const uploadQuizQuestionSuccess = withMatcher(
   (): UploadQuizQuestionSuccess => {
     return createAction(QUIZ_ACTION_TYPES.UPLOAD_QUIZ_QUESTIONS_SUCCESS);
+  }
+);
+export const quizSuccessfullyCreated = withMatcher(
+  (): QuizSuccessfullyCreated => {
+    return createAction(QUIZ_ACTION_TYPES.QUIZ_SUCCESSFULLY_CREATED);
+  }
+);
+export const closeModal = withMatcher(
+  (): CloseModal => {
+    return createAction(QUIZ_ACTION_TYPES.CLOSE_MODAL);
   }
 );

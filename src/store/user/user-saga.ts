@@ -1,6 +1,7 @@
 import { takeLatest, put, all, call } from "typed-redux-saga/macro";
 import { User } from "firebase/auth";
 import { USER_ACTION_TYPES } from "./user.types";
+import { AuthErrorCodes, AuthError } from "firebase/auth";
 import {
   signInFailed,
   signInSuccess,
@@ -45,6 +46,7 @@ export function* getSnapshotFromUserAuth(
       yield* put(setBackToHome(true));
     }
   } catch (error) {
+    alert("something when wrong please try again");
     yield* put(signInFailed(error as Error));
   }
 }
@@ -53,6 +55,7 @@ export function* signInWithGoogle() {
     const { user } = yield* call(signInWithGooglepopup);
     yield* call(getSnapshotFromUserAuth, user);
   } catch (error) {
+    alert("something when wrong please try again");
     yield* put(signInFailed(error as Error));
   }
 }
@@ -72,6 +75,20 @@ export function* signInWithEmail({
       yield* call(getSnapshotFromUserAuth, user);
     }
   } catch (error) {
+    if (AuthErrorCodes.EMAIL_EXISTS) {
+      alert("cannot create user, email already in use");
+    }
+    switch ((error as AuthError).code) {
+      case AuthErrorCodes.INVALID_PASSWORD:
+        alert("incorrect password for email");
+        break;
+      case AuthErrorCodes.USER_DELETED:
+        alert("no user associated with this email");
+        break;
+
+      default:
+        console.error(`shit${error} tttt`);
+    }
     yield* put(signInFailed(error as Error));
   }
 }
@@ -106,6 +123,20 @@ export function* signUp({
       // yield* put(setBackToHome(true))
     }
   } catch (error) {
+    if (AuthErrorCodes.EMAIL_EXISTS) {
+      alert("cannot create user, email already in use");
+    }
+    switch ((error as AuthError).code) {
+      case AuthErrorCodes.INVALID_PASSWORD:
+        alert("incorrect password for email");
+        break;
+      case AuthErrorCodes.USER_DELETED:
+        alert("no user associated with this email");
+        break;
+
+      default:
+        console.error(`shit${error} tttt`);
+    }
     yield* put(signUpFailed(error as Error));
     alert("something went wrong please refresh and try again");
   }
@@ -117,6 +148,7 @@ export function* signInAfterSignUp({
     yield* call(getSnapshotFromUserAuth, user, additionalDetails);
   } catch (error) {
     yield* put(signUpFailed(error as Error));
+
     alert("something went wrong please refresh and try again");
   }
 }

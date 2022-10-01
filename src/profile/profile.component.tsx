@@ -17,6 +17,8 @@ import {
   LogOutBtn,
 } from "../home/home.style";
 import { InnerQuizData } from "../utils/firebase.utils";
+import { ProfileMainDiv, ProfileMainText } from "./profile.styles";
+import ProfilContainer from "../profilContainer/profileContainer.component";
 const Profile = () => {
   const dispatch = useDispatch();
   const uid = useSelector(selectUserUid);
@@ -28,12 +30,7 @@ const Profile = () => {
     }
   }, []);
   const quiz = Object.entries(quizMainObject);
-  const key = Object.values(quizMainObject);
-  // key.map((i) => {
-  //   i;
-  // });
-
-  console.log(Object.keys(quizMainObject), Object.values(quizMainObject));
+ 
   return (
     <>
       {isLoading ? (
@@ -41,13 +38,16 @@ const Profile = () => {
       ) : (
         <>
           <Area>
-            {quiz.map((item) => {
-              const quizSlice = item[1];
-
+            <ProfileMainDiv>
+              <ProfileMainText>See all your quiz here</ProfileMainText>
+            </ProfileMainDiv>
+           
+            {quiz.map((item, i) => {
+              
+              // outerQuizData[Object.keys(outerQuizData)[0]];
               return (
                 <>
-                  <h2>{quizSlice.quizName}</h2>
-                  <p>{(quizSlice.quizData as unknown as InnerQuizData).name}</p>
+                   <ProfilContainer quizSlice={item[1]} key={i}></ProfilContainer>
                 </>
               );
             })}

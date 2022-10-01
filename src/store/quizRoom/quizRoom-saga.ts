@@ -15,12 +15,12 @@ import {
 } from "./quizRoom.action";
 
 export function* getQuestionsFromDbStart({ payload }: GetQuestionsFromDbStart) {
-  const rawQuizFromDb = yield* call(getAQuizFromDb, payload);
-  const id = rawQuizFromDb.data()?.id;
-  const quizData = rawQuizFromDb.data()?.quizData;
-  const quizName = rawQuizFromDb.data()?.quizName;
-  const quizOwner = rawQuizFromDb.data()?.quizOwner;
   try {
+    const rawQuizFromDb = yield* call(getAQuizFromDb, payload);
+    const id = rawQuizFromDb.data()?.id;
+    const quizData = rawQuizFromDb.data()?.quizData;
+    const quizName = rawQuizFromDb.data()?.quizName;
+    const quizOwner = rawQuizFromDb.data()?.quizOwner;
     if (id) {
       yield* put(setQuizId(id));
     }

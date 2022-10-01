@@ -67,7 +67,10 @@ export const QuizLink = styled.span`
   background-color: white;
   padding: 1rem;
   border-radius: 18px;
-
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 80%;
   @media (max-width: 900px) {
     font-size: 1.2rem;
   }

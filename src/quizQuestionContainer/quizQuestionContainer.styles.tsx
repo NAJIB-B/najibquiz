@@ -87,16 +87,21 @@ export const BtnDiv = styled.div`
 export const Radiocontainer = styled.div`
   background-color: #e7e9eb;
   display: block;
-  height: 1.5rem;
+  min-height: 1.5rem;
   margin-bottom: 0.2rem;
+  word-break: break-all;
   cursor: pointer;
   &hover {
     background-color: #c7ccd1;
+  }
+  label {
+    padding-left: 1rem;
   }
 `;
 
 export const Question = styled.h3`
   text-align: center;
+  word-break: break-word;
 `;
 export const SubmitBtn = styled.button`
   background-color: rgb(0, 153, 51);

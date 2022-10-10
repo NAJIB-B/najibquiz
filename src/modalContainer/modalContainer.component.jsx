@@ -1,4 +1,4 @@
-import { SignUpBtn } from "../home/home.style";
+import { FilledBtn } from "../home/home.style";
 
 import {
   Overlay,
@@ -36,7 +36,7 @@ const ModalContainer = () => {
         <Message>Quiz successfully created </Message>
 
         <QuizLink>{url}</QuizLink>
-        <SignUpBtn onClick={copy}>copy link to quiz</SignUpBtn>
+        <FilledBtn onClick={copy}>copy link to quiz</FilledBtn>
       </ModalContainerDiv>
       <Overlay onClick={close}></Overlay>
     </div>

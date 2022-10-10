@@ -3,13 +3,7 @@ import { useEffect, useState, ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../spinner/spinner.component";
 import { LoginDiv, FormFieldLabels, FormInputs } from "../login/login.style";
-import {
-  Circles,
-  CirclesLi,
-  Area,
-  SignUpBtn,
-  LogOutBtn,
-} from "../home/home.style";
+import { Area, FilledBtn, OutlineBtn } from "../home/home.style";
 import {
   selectCurrentArrayNumber,
   selectEditableQuizArray,
@@ -84,21 +78,8 @@ const QuizQuestions = () => {
                   />
                   <br />
                   <br />
-                  <SignUpBtn onClick={startQuiz}>Start quiz</SignUpBtn>
+                  <FilledBtn onClick={startQuiz}>Start quiz</FilledBtn>
                 </LoginDiv>
-
-                <Circles>
-                  <CirclesLi></CirclesLi>
-                  <CirclesLi></CirclesLi>
-                  <CirclesLi></CirclesLi>
-                  <CirclesLi></CirclesLi>
-                  <CirclesLi></CirclesLi>
-                  <CirclesLi></CirclesLi>
-                  <CirclesLi></CirclesLi>
-                  <CirclesLi></CirclesLi>
-                  <CirclesLi></CirclesLi>
-                  <CirclesLi></CirclesLi>
-                </Circles>
               </Area>
             </>
           )}

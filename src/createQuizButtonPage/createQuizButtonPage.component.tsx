@@ -5,13 +5,7 @@ import { useDispatch } from "react-redux";
 import { generatePassword } from "../utils/helper";
 import { uploadQuizQuestionStart } from "../store/quiz/quiz.action";
 import { QuizMainObject } from "../store/quiz/quiz.reducer";
-import {
-  Circles,
-  CirclesLi,
-  Area,
-  SignUpBtn,
-  LogOutBtn,
-} from "../home/home.style";
+import { Area, FilledBtn, OutlineBtn } from "../home/home.style";
 
 import { LoginDiv, DontHaveAccout } from "../login/login.style";
 import {
@@ -41,21 +35,8 @@ const CreateQuizButtonPage = () => {
       <Area>
         <BringQuizToLifePageDiv>
           <BringQuizToLife>Bring your quiz to life</BringQuizToLife>
-          <SignUpBtn onClick={uploadQuiz}>Create </SignUpBtn>
+          <FilledBtn onClick={uploadQuiz}>Create </FilledBtn>
         </BringQuizToLifePageDiv>
-
-        <Circles>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-        </Circles>
       </Area>
     </>
   );

@@ -16,13 +16,7 @@ import {
   GoogleIcon,
 } from "./login.style";
 
-import {
-  Circles,
-  CirclesLi,
-  Area,
-  SignUpBtn,
-  LogOutBtn,
-} from "../home/home.style";
+import { Area, FilledBtn, OutlineBtn } from "../home/home.style";
 import Spinner from "../spinner/spinner.component";
 const Login = () => {
   const navigate = useNavigate();
@@ -86,7 +80,7 @@ const Login = () => {
           <FormFieldLabels>Email :</FormFieldLabels>
           <FormInputs
             type="email"
-            placeholder="Email"
+            placeholder="Youremail@gmail.com"
             name="email"
             onChange={handleChange}
             value={email}
@@ -102,36 +96,24 @@ const Login = () => {
             required
           />
           <br />
-          <SignUpBtn onClick={login}>login</SignUpBtn>
+          <FilledBtn onClick={login}>login</FilledBtn>
           <Or>or</Or>
-          <LogOutBtn onClick={signInWithGoogle}>
+          <OutlineBtn onClick={signInWithGoogle}>
             {" "}
             <SignInwithgoogleTextDiv>
               <div>
-                <GoogleIcon icon="ant-design:google-outlined" color="white" />{" "}
+                <GoogleIcon icon="ant-design:google-outlined" color="#2e266f" />{" "}
               </div>
               <div>
                 {" "}
                 <span>sign in with google</span>
               </div>
             </SignInwithgoogleTextDiv>
-          </LogOutBtn>
+          </OutlineBtn>
           <DontHaveAccout>
             Don't have an account?<span onClick={signUp}>Sign up</span>
           </DontHaveAccout>
         </LoginDiv>
-        <Circles>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-        </Circles>
       </Area>
     </>
   );

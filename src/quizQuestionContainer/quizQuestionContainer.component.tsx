@@ -29,6 +29,7 @@ import {
   Next,
   Prev,
   Question,
+  QuestionsPage,
   Radiocontainer,
   SubmitBtn,
 } from "./quizQuestionContainer.styles";

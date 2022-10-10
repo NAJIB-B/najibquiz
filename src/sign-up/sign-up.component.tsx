@@ -19,9 +19,8 @@ import {
   GoogleIcon,
   Or,
 } from "../login/login.style";
-import { Circles, CirclesLi, SignUpBtn, LogOutBtn } from "../home/home.style";
+import { FilledBtn, OutlineBtn } from "../home/home.style";
 
-import BackBtn from "../backBtn/backBtn.component";
 import { useDispatch } from "react-redux";
 
 import { SignUpPageDiv, SignUpDiv } from "./sign-up.style";
@@ -53,11 +52,13 @@ const SignUp = () => {
     navigate("/login", { replace: true });
   };
   const signUp = async () => {
-    if(!displayName.trim() ||
-    !email.trim() ||
-    !password.trim() ||
-    !confirmPassword.trim() ){
-    alert("You can't leave any of the input blank")
+    if (
+      !displayName.trim() ||
+      !email.trim() ||
+      !password.trim() ||
+      !confirmPassword.trim()
+    ) {
+      alert("You can't leave any of the input blank");
     }
     if (password !== confirmPassword) {
       alert("password do not match");
@@ -78,84 +79,66 @@ const SignUp = () => {
   };
 
   return (
-  
-        <>
-          <SignUpPageDiv>
-            <SignUpDiv>
-              <FormFieldLabels>Name :</FormFieldLabels>
-              <FormInputs
-                type="text"
-                placeholder="name"
-                name="displayName"
-                onChange={handleChange}
-                value={displayName}
-                required
-              />
-              <FormFieldLabels>Email :</FormFieldLabels>
-              <FormInputs
-                type="email"
-                placeholder="email"
-                name="email"
-                onChange={handleChange}
-                value={email}
-                required
-              />
-              <FormFieldLabels>Password :</FormFieldLabels>
-              <FormInputs
-                type="password"
-                placeholder="password"
-                name="password"
-                onChange={handleChange}
-                value={password}
-                required
-              />
-              <FormFieldLabels>Confirm password :</FormFieldLabels>
-              <FormInputs
-                type="password"
-                placeholder="confirm password"
-                name="confirmPassword"
-                onChange={handleChange}
-                value={confirmPassword}
-                required
-              />
-              <br />
-              <SignUpBtn onClick={signUp}>sign up</SignUpBtn>
-              <Or>or</Or>
-              <LogOutBtn onClick={signInWithGoogle}>
+    <>
+      <SignUpPageDiv>
+        <SignUpDiv>
+          <FormFieldLabels>Name :</FormFieldLabels>
+          <FormInputs
+            type="text"
+            placeholder="name"
+            name="displayName"
+            onChange={handleChange}
+            value={displayName}
+            required
+          />
+          <FormFieldLabels>Email :</FormFieldLabels>
+          <FormInputs
+            type="email"
+            placeholder="email"
+            name="email"
+            onChange={handleChange}
+            value={email}
+            required
+          />
+          <FormFieldLabels>Password :</FormFieldLabels>
+          <FormInputs
+            type="password"
+            placeholder="password"
+            name="password"
+            onChange={handleChange}
+            value={password}
+            required
+          />
+          <FormFieldLabels>Confirm password :</FormFieldLabels>
+          <FormInputs
+            type="password"
+            placeholder="confirm password"
+            name="confirmPassword"
+            onChange={handleChange}
+            value={confirmPassword}
+            required
+          />
+          <br />
+          <FilledBtn onClick={signUp}>sign up</FilledBtn>
+          <Or>or</Or>
+          <OutlineBtn onClick={signInWithGoogle}>
+            {" "}
+            <SignInwithgoogleTextDiv>
+              <div>
+                <GoogleIcon icon="ant-design:google-outlined" color="#2e266f" />{" "}
+              </div>
+              <div>
                 {" "}
-                <SignInwithgoogleTextDiv>
-                  <div>
-                    <GoogleIcon
-                      icon="ant-design:google-outlined"
-                      color="white"
-                    />{" "}
-                  </div>
-                  <div>
-                    {" "}
-                    <span>sign in with google</span>
-                  </div>
-                </SignInwithgoogleTextDiv>
-              </LogOutBtn>
-              <DontHaveAccout>
-                Already have an account?<span onClick={login}>Log in</span>
-              </DontHaveAccout>
-            </SignUpDiv>
-            <Circles>
-              <CirclesLi></CirclesLi>
-              <CirclesLi></CirclesLi>
-              <CirclesLi></CirclesLi>
-              <CirclesLi></CirclesLi>
-              <CirclesLi></CirclesLi>
-              <CirclesLi></CirclesLi>
-              <CirclesLi></CirclesLi>
-              <CirclesLi></CirclesLi>
-              <CirclesLi></CirclesLi>
-              <CirclesLi></CirclesLi>
-            </Circles>
-          </SignUpPageDiv>
-        </>
-      
-   
+                <span>sign in with google</span>
+              </div>
+            </SignInwithgoogleTextDiv>
+          </OutlineBtn>
+          <DontHaveAccout>
+            Already have an account?<span onClick={login}>Log in</span>
+          </DontHaveAccout>
+        </SignUpDiv>
+      </SignUpPageDiv>
+    </>
   );
 };
 

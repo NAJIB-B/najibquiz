@@ -20,17 +20,17 @@ export const LoginDiv = styled.div`
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid white;
+  border: 1px solid #2e266f;
   border-radius: 20px;
   padding: 2rem;
   z-index: 10;
 `;
 export const DontHaveAccout = styled.h4`
-  color: white;
+  color: #2e266f;
   font-size: 1.2rem;
-  text-shadow: 2px 2px black;
+
   & span {
-    color: #71df73;
+    color: #fe043c;
 
     cursor: pointer;
   }
@@ -41,7 +41,7 @@ export const DontHaveAccout = styled.h4`
 export const FormFieldLabels = styled.p`
   font-size: 1.3rem;
   font-family: "Exo", sans-serif;
-  color: white;
+  color: #2e266f;
   text-align: left;
   margin-bottom: 0;
   @media (max-width: 660px) {
@@ -55,8 +55,10 @@ export const FormInputs = styled.input`
   height: 2.3rem;
   width: 25rem;
   outline: none;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-family: "Exo", sans-serif;
+  border-radius: 10px;
+  color: #2e266f;
   @media (max-width: 660px) {
     height: 2rem;
     font-size: 1rem;
@@ -78,7 +80,7 @@ export const FormInputs = styled.input`
 `;
 export const SignInwithgoogleTextDiv = styled.div`
   display: flex;
-  align-items: stretch;
+  align-items: center;
   @media (max-width: 660px) {
     font-size: 1.2rem;
   }
@@ -90,6 +92,6 @@ export const SignInwithgoogleTextDiv = styled.div`
   }
 `;
 export const Or = styled.p`
-  color: white;
+  color: #2e266f;
   font-size: 1.2rem;
 `;

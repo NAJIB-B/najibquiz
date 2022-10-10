@@ -6,13 +6,7 @@ import {
 } from "../store/quiz/quiz.action";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {
-  Circles,
-  CirclesLi,
-  Area,
-  SignUpBtn,
-  LogOutBtn,
-} from "../home/home.style";
+import { Area, FilledBtn, OutlineBtn } from "../home/home.style";
 import {
   LoginDiv,
   FormFieldLabels,
@@ -85,20 +79,8 @@ const QuizSettingsPage = () => {
           />
           <br />
           <br />
-          <SignUpBtn onClick={createQuiz}>create quiz</SignUpBtn>
+          <FilledBtn onClick={createQuiz}>create quiz</FilledBtn>
         </LoginDiv>
-        <Circles>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-        </Circles>
       </Area>
     </>
   );

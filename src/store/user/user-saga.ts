@@ -46,7 +46,6 @@ export function* getSnapshotFromUserAuth(
       yield* put(setBackToHome(true));
     }
   } catch (error) {
-    alert("something when wrong please try again");
     yield* put(signInFailed(error as Error));
   }
 }
@@ -55,7 +54,6 @@ export function* signInWithGoogle() {
     const { user } = yield* call(signInWithGooglepopup);
     yield* call(getSnapshotFromUserAuth, user);
   } catch (error) {
-    alert("something when wrong please try again");
     yield* put(signInFailed(error as Error));
   }
 }
@@ -103,7 +101,9 @@ export function* isUserAuthenticated() {
     yield* call(getSnapshotFromUserAuth, userAuth);
   } catch (error) {
     yield* put(signInFailed(error as Error));
-    alert("something went wrong please refresh and try again");
+    alert(
+      "something went wrong please check your connection refresh and try again"
+    );
   }
 }
 
@@ -138,7 +138,6 @@ export function* signUp({
         console.error(`shit${error} tttt`);
     }
     yield* put(signUpFailed(error as Error));
-    alert("something went wrong please refresh and try again");
   }
 }
 export function* signInAfterSignUp({
@@ -148,8 +147,6 @@ export function* signInAfterSignUp({
     yield* call(getSnapshotFromUserAuth, user, additionalDetails);
   } catch (error) {
     yield* put(signUpFailed(error as Error));
-
-    alert("something went wrong please refresh and try again");
   }
 }
 
@@ -159,7 +156,6 @@ export function* signOut() {
     yield* put(signOutSuccess());
   } catch (error) {
     yield* put(signOutFailed);
-    alert("something went wrong please refresh and try again");
   }
 }
 

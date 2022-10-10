@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Main = styled.div`
-  border: 1px solid rgb(0, 153, 51);
+  border: 1px solid #2e266f;
   width: 70%;
   height: auto;
   position: absolute;
@@ -15,6 +15,9 @@ export const Main = styled.div`
   @media (max-width: 250px) {
     width: 90%;
   }
+`;
+export const QuestionsPage = styled.div`
+  background-color: #ffedde;
 `;
 export const Body = styled.div`
   margin: 2rem;
@@ -31,8 +34,8 @@ export const Prev = styled.button`
   height: 2rem;
   width: 5rem;
   border: none;
-  background-color: rgb(0, 153, 51);
-  color: white;
+  background-color: #2e266f;
+  color: #ffedde;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 1.2rem;
@@ -57,8 +60,8 @@ export const Next = styled.button`
   height: 2rem;
   width: 5rem;
   border: none;
-  background-color: rgb(0, 153, 51);
-  color: white;
+  background-color: #2e266f;
+  color: #ffedde;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 1.2rem;
@@ -85,14 +88,14 @@ export const BtnDiv = styled.div`
   padding-top: 3rem;
 `;
 export const Radiocontainer = styled.div`
-  background-color: #e7e9eb;
+  background-color: rgba(255, 237, 222, 0.7);
   display: block;
   min-height: 1.5rem;
   margin-bottom: 0.2rem;
   word-break: break-all;
   cursor: pointer;
   &hover {
-    background-color: #c7ccd1;
+    background-color: rgb(255, 237, 222);
   }
   label {
     padding-left: 1rem;
@@ -102,10 +105,11 @@ export const Radiocontainer = styled.div`
 export const Question = styled.h3`
   text-align: center;
   word-break: break-word;
+  color: #2e266f;
 `;
 export const SubmitBtn = styled.button`
-  background-color: rgb(0, 153, 51);
-  color: white;
+  background-color: #2e266f;
+  color: #ffedde;
   height: 2rem;
   width: 6rem;
   border: none;

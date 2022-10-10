@@ -7,7 +7,7 @@ export const ProfileMainDiv = styled.div`
   z-index: 11;
 `;
 export const ProfileMainText = styled.h3`
-  color: white;
+  color: #2e266f;
   padding-top: 2rem;
   margin: 0;
   font-size: 3rem;

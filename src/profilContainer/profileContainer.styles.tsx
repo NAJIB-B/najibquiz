@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const QuizName = styled.h3`
-  background-color: #33cc36;
+  background-color: #2e266f;
   padding: 1rem;
   font-size: 1.7rem;
-  color: white;
+  color: #ffedde;
   letter-spacing: 2px;
   text-shadow: 2px 2px black;
   @media (max-width: 500px) {
@@ -19,7 +19,7 @@ export const ProfileContainerDiv = styled.div`
   z-index: 11;
   & p {
     font-size: 1.3rem;
-    color: white;
+    color: #2e266f;
     font-weight: 800;
     letter-spacing: 2px;
     margin-bottom: 0;

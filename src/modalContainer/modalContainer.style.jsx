@@ -10,7 +10,7 @@ export const ModalContainerDiv = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 1px 2px 10px;
-  background-color: rgb(152, 68, 183);
+  background-color: #2e266f;
   display: grid;
   place-items: center;
   z-index: 12;
@@ -43,13 +43,13 @@ export const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(51, 204, 54, 0.7);
+  background-color: rgba(255, 237, 222, 0.7);
   backdrop-filter: blur(10px);
   display: inline-block;
 `;
 
 export const Message = styled.span`
-  color: white;
+  color: #ffedde;
   font-size: 2rem;
   @media (max-width: 900px) {
     font-size: 1.5rem;
@@ -62,9 +62,9 @@ export const Message = styled.span`
   }
 `;
 export const QuizLink = styled.span`
-  color: black;
+  color: #2e266f;
   font-size: 1.5rem;
-  background-color: white;
+  background-color: #ffedde;
   padding: 1rem;
   border-radius: 18px;
   text-overflow: ellipsis;
@@ -92,9 +92,9 @@ export const CloseBtn = styled.span`
   font-weight: 700;
   right: 1.5rem;
   top: 1rem;
-  color: white;
+  color: #2e266f;
   padding: 1rem;
-  background-color: #33cc36;
+  background-color: #ffedde;
   border-radius: 45%;
   cursor: pointer;
   @media (max-width: 900px) {

@@ -9,7 +9,7 @@ import {
 } from "../store/quiz/quiz.selector";
 import { useSelector } from "react-redux";
 import { SignUpPageDiv, SignUpDiv } from "../sign-up/sign-up.style";
-import { Circles, CirclesLi, SignUpBtn } from "../home/home.style";
+import { FilledBtn } from "../home/home.style";
 import { addQuestionToQuiz } from "../store/quiz/quiz.action";
 import { FormInputs, FormFieldLabels } from "../login/login.style";
 import { finishSettingQuestion } from "../store/quiz/quiz.action";
@@ -56,7 +56,6 @@ const QuizFormPage = () => {
     setFormFields(defaultFormFields);
   };
   const addToQuestions = () => {
-   
     if (
       !question.trim() ||
       !answer.trim() ||
@@ -65,7 +64,9 @@ const QuizFormPage = () => {
       !option3.trim() ||
       !option4.trim()
     ) {
-      alert(" You can't leave any of the inputs blank. Please fill all the input fields before you proceed");
+      alert(
+        " You can't leave any of the inputs blank. Please fill all the input fields before you proceed"
+      );
       return;
     }
     if (
@@ -79,7 +80,7 @@ const QuizFormPage = () => {
       );
       return;
     }
-    
+
     const number = quizCount.toString();
     dispatch(
       addQuestionToQuiz({
@@ -172,20 +173,8 @@ const QuizFormPage = () => {
                 />
                 <br />
                 <br />
-                <SignUpBtn onClick={addToQuestions}>Add to questions</SignUpBtn>
+                <FilledBtn onClick={addToQuestions}>Add to questions</FilledBtn>
               </SignUpDiv>
-              <Circles>
-                <CirclesLi></CirclesLi>
-                <CirclesLi></CirclesLi>
-                <CirclesLi></CirclesLi>
-                <CirclesLi></CirclesLi>
-                <CirclesLi></CirclesLi>
-                <CirclesLi></CirclesLi>
-                <CirclesLi></CirclesLi>
-                <CirclesLi></CirclesLi>
-                <CirclesLi></CirclesLi>
-                <CirclesLi></CirclesLi>
-              </Circles>
             </SignUpPageDiv>
           )}
         </>

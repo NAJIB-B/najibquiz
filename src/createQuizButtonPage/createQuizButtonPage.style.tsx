@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const BringQuizToLife = styled.h1`
-  color: white;
+  color: #2e266f;
   font-size: 2.5rem;
-  text-shadow: 2px 2px black;
+
   @media (max-width: 800px) {
     font-size: 2rem;
   }
@@ -25,7 +25,8 @@ export const BringQuizToLifePageDiv = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid white;
+  border: 1px solid #2e266f;
+
   border-radius: 20px;
   padding: 2rem;
   z-index: 10;

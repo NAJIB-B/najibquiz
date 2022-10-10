@@ -7,9 +7,10 @@ import {
   HomeNavButtonsDiv,
   HomeTextDiv,
   HomeTextInnerDiv,
-  LogOutBtn,
-  SignUpBtn,
+  OutlineBtn,
+  FilledBtn,
   HomeImage,
+  HomeImageDiv,
 } from "./home.style";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -21,7 +22,7 @@ import {
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../store/user/user.selector";
 import { selectQuizSuccess } from "../store/quiz/quiz.selector";
-import { Area, Circles, CirclesLi } from "./home.style";
+import { Area } from "./home.style";
 import ModalContainer from "../modalContainer/modalContainer.component";
 const Home = () => {
   const navigate = useNavigate();
@@ -56,13 +57,13 @@ const Home = () => {
           <HomeNavButtonsDiv>
             {currentUser ? (
               <>
-                <LogOutBtn onClick={signOut}>sign Out </LogOutBtn>
-                <SignUpBtn onClick={profile}>profile</SignUpBtn>
+                <OutlineBtn onClick={signOut}>sign Out </OutlineBtn>
+                <FilledBtn onClick={profile}>profile</FilledBtn>
               </>
             ) : (
               <>
-                <LogOutBtn onClick={login}> login</LogOutBtn>
-                <SignUpBtn onClick={signUp}> signUp</SignUpBtn>
+                <OutlineBtn onClick={login}> login</OutlineBtn>
+                <FilledBtn onClick={signUp}> signUp</FilledBtn>
               </>
             )}
           </HomeNavButtonsDiv>
@@ -79,25 +80,13 @@ const Home = () => {
               </HomeH4>
               <br />
 
-              <SignUpBtn onClick={quiz}> Create quiz</SignUpBtn>
+              <FilledBtn onClick={quiz}> Create quiz</FilledBtn>
             </HomeTextInnerDiv>
-            <div>
+            <HomeImageDiv>
               <HomeImage src={image} alt="image of boy taking test"></HomeImage>
-            </div>
+            </HomeImageDiv>
           </HomeTextDiv>
         </HomeDiv>
-        <Circles>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-          <CirclesLi></CirclesLi>
-        </Circles>
       </Area>
     </>
   );

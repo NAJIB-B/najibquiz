@@ -9,13 +9,7 @@ import {
   selectQuizesData,
 } from "../store/profile/profile.selector";
 
-import {
-  Circles,
-  CirclesLi,
-  Area,
-  SignUpBtn,
-  LogOutBtn,
-} from "../home/home.style";
+import { Area, FilledBtn, OutlineBtn } from "../home/home.style";
 import { InnerQuizData } from "../utils/firebase.utils";
 import { ProfileMainDiv, ProfileMainText } from "./profile.styles";
 import ProfilContainer from "../profilContainer/profileContainer.component";
@@ -30,7 +24,7 @@ const Profile = () => {
     }
   }, []);
   const quiz = Object.entries(quizMainObject);
- 
+
   return (
     <>
       {isLoading ? (
@@ -41,29 +35,18 @@ const Profile = () => {
             <ProfileMainDiv>
               <ProfileMainText>See all your quiz here</ProfileMainText>
             </ProfileMainDiv>
-           
+
             {quiz.map((item, i) => {
-              
               // outerQuizData[Object.keys(outerQuizData)[0]];
               return (
                 <>
-                   <ProfilContainer quizSlice={item[1]} key={i}></ProfilContainer>
+                  <ProfilContainer
+                    quizSlice={item[1]}
+                    key={i}
+                  ></ProfilContainer>
                 </>
               );
             })}
-
-            <Circles>
-              <CirclesLi></CirclesLi>
-              <CirclesLi></CirclesLi>
-              <CirclesLi></CirclesLi>
-              <CirclesLi></CirclesLi>
-              <CirclesLi></CirclesLi>
-              <CirclesLi></CirclesLi>
-              <CirclesLi></CirclesLi>
-              <CirclesLi></CirclesLi>
-              <CirclesLi></CirclesLi>
-              <CirclesLi></CirclesLi>
-            </Circles>
           </Area>
         </>
       )}

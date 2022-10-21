@@ -1,7 +1,10 @@
 import { async } from "@firebase/util";
 import { useEffect, ChangeEvent } from "react";
 import { useSelector } from "react-redux";
-import { selectBackToHome, selectIsLoading } from "../store/user/user.selector";
+import {
+  selectBackToHome,
+  selectIsLoading,
+} from "../../store/user/user.selector";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthErrorCodes, User, UserCredential } from "firebase/auth";
@@ -10,7 +13,7 @@ import {
   checkUserSession,
   googleSignInStart,
   signUpStart,
-} from "../store/user/user.action";
+} from "../../store/user/user.action";
 import {
   FormFieldLabels,
   FormInputs,
@@ -24,7 +27,7 @@ import { FilledBtn, OutlineBtn } from "../home/home.style";
 import { useDispatch } from "react-redux";
 
 import { SignUpPageDiv, SignUpDiv } from "./sign-up.style";
-import Spinner from "../spinner/spinner.component";
+import Spinner from "../../components/spinner/spinner.component";
 
 const SignUp = () => {
   const navigate = useNavigate();

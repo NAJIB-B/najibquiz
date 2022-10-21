@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
-import { selectQuiz, selectQuizName } from "../store/quiz/quiz.selector";
-import { selectUserUid } from "../store/user/user.selector";
+import { selectQuiz, selectQuizName } from "../../store/quiz/quiz.selector";
+import { selectUserUid } from "../../store/user/user.selector";
 import { useDispatch } from "react-redux";
-import { generatePassword } from "../utils/helper";
-import { uploadQuizQuestionStart } from "../store/quiz/quiz.action";
-import { QuizMainObject } from "../store/quiz/quiz.reducer";
-import { Area, FilledBtn, OutlineBtn } from "../home/home.style";
+import { generatePassword } from "../../utils/helper";
+import { uploadQuizQuestionStart } from "../../store/quiz/quiz.action";
+import { QuizMainObject } from "../../store/quiz/quiz.reducer";
+import { Area, FilledBtn, OutlineBtn } from "../../routes/home/home.style";
 
-import { LoginDiv, DontHaveAccout } from "../login/login.style";
+import { LoginDiv, DontHaveAccout } from "../../routes/login/login.style";
 import {
   BringQuizToLife,
   BringQuizToLifePageDiv,

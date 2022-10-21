@@ -1,5 +1,5 @@
 import { useNavigate, Outlet } from "react-router-dom";
-import image from "../assets/homeImg.png";
+import image from "../../assets/homeImg.png";
 import {
   HomeDiv,
   HomeH1,
@@ -18,12 +18,12 @@ import {
   checkUserSession,
   setBackToHome,
   signOutStart,
-} from "../store/user/user.action";
+} from "../../store/user/user.action";
 import { useSelector } from "react-redux";
-import { selectCurrentUser } from "../store/user/user.selector";
-import { selectQuizSuccess } from "../store/quiz/quiz.selector";
+import { selectCurrentUser } from "../../store/user/user.selector";
+import { selectQuizSuccess } from "../../store/quiz/quiz.selector";
 import { Area } from "./home.style";
-import ModalContainer from "../modalContainer/modalContainer.component";
+import ModalContainer from "../../components/modalContainer/modalContainer.component";
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

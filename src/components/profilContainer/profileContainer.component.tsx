@@ -1,4 +1,4 @@
-import { InnerUserQuiz } from "../utils/firebase.utils";
+import { InnerUserQuiz } from "../../utils/firebase.utils";
 import {
   ProfileContainerDiv,
   QuizName,

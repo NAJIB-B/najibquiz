@@ -6,14 +6,14 @@ import {
   selectQuestionNumber,
   selectQuizCount,
   selectQuizSuccess,
-} from "../store/quiz/quiz.selector";
+} from "../../store/quiz/quiz.selector";
 import { useSelector } from "react-redux";
-import { SignUpPageDiv, SignUpDiv } from "../sign-up/sign-up.style";
-import { FilledBtn } from "../home/home.style";
-import { addQuestionToQuiz } from "../store/quiz/quiz.action";
-import { FormInputs, FormFieldLabels } from "../login/login.style";
-import { finishSettingQuestion } from "../store/quiz/quiz.action";
-import { selectfinishSettingQuestion } from "../store/quiz/quiz.selector";
+import { SignUpPageDiv, SignUpDiv } from "../../routes/sign-up/sign-up.style";
+import { FilledBtn } from "../../routes/home/home.style";
+import { addQuestionToQuiz } from "../../store/quiz/quiz.action";
+import { FormInputs, FormFieldLabels } from "../../routes/login/login.style";
+import { finishSettingQuestion } from "../../store/quiz/quiz.action";
+import { selectfinishSettingQuestion } from "../../store/quiz/quiz.selector";
 import React from "react";
 import ReactDOM from "react-dom";
 import CreateQuizButtonPage from "../createQuizButtonPage/createQuizButtonPage.component";

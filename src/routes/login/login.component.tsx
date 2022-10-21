@@ -1,11 +1,17 @@
 import { useState, ChangeEvent } from "react";
 import { AuthError, AuthErrorCodes } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { emailSignInStart, googleSignInStart } from "../store/user/user.action";
+import {
+  emailSignInStart,
+  googleSignInStart,
+} from "../../store/user/user.action";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { selectBackToHome, selectIsLoading } from "../store/user/user.selector";
+import {
+  selectBackToHome,
+  selectIsLoading,
+} from "../../store/user/user.selector";
 import {
   LoginDiv,
   FormFieldLabels,
@@ -17,7 +23,7 @@ import {
 } from "./login.style";
 
 import { Area, FilledBtn, OutlineBtn } from "../home/home.style";
-import Spinner from "../spinner/spinner.component";
+import Spinner from "../../components/spinner/spinner.component";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

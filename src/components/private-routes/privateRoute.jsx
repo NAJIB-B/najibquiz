@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 
 import { useSelector } from "react-redux";
-import { selectCurrentUser } from "../store/user/user.selector";
+import { selectCurrentUser } from "../../store/user/user.selector";
 
 function PrivateRoute({ children }) {
   const currentUser = useSelector(selectCurrentUser);
@@ -9,7 +9,7 @@ function PrivateRoute({ children }) {
 
   if (!currentUser) {
     // not logged in so redirect to login page with the return url
-   
+
     return <Navigate to="/login" />;
   }
 

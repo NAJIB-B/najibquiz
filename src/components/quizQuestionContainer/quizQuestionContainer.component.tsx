@@ -1,4 +1,4 @@
-import { EditableQuizFormat, QuizFormat } from "../utils/firebase.utils";
+import { EditableQuizFormat, QuizFormat } from "../../utils/firebase.utils";
 import { MouseEvent, ChangeEvent, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -6,7 +6,7 @@ import {
   setCheckedValue,
   setCheckedValueInEditableArray,
   uploadQuizResultToOwnerDbStart,
-} from "../store/quizRoom/quizRoom.action";
+} from "../../store/quizRoom/quizRoom.action";
 import { useNavigate } from "react-router-dom";
 import {
   selectCheckedValue,
@@ -16,12 +16,12 @@ import {
   selectQuizId,
   selectQuizOwner,
   selectQuizTakerName,
-} from "../store/quizRoom/quizRoom.selector";
+} from "../../store/quizRoom/quizRoom.selector";
 import {
   addCurrentArrayNumber,
   reduceCurrentArrayNumber,
-} from "../store/quizRoom/quizRoom.action";
-import { QuizResultFormat } from "../store/quizRoom/quizRoom.reducer";
+} from "../../store/quizRoom/quizRoom.action";
+import { QuizResultFormat } from "../../store/quizRoom/quizRoom.reducer";
 import {
   Body,
   BtnDiv,

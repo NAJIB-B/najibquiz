@@ -1,4 +1,4 @@
-import { FilledBtn } from "../home/home.style";
+import { FilledBtn } from "../../routes/home/home.style";
 
 import {
   Overlay,
@@ -8,9 +8,9 @@ import {
   CloseBtn,
 } from "./modalContainer.style";
 import { useDispatch } from "react-redux";
-import { closeModal, setQuizId } from "../store/quiz/quiz.action";
+import { closeModal, setQuizId } from "../../store/quiz/quiz.action";
 import { useSelector } from "react-redux";
-import { selectQuizId } from "../store/quiz/quiz.selector";
+import { selectQuizId } from "../../store/quiz/quiz.selector";
 import { URL, URLSearchParams } from "url";
 const ModalContainer = () => {
   const dispatch = useDispatch();

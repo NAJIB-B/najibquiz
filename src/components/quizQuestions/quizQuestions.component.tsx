@@ -2,20 +2,24 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState, ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../spinner/spinner.component";
-import { LoginDiv, FormFieldLabels, FormInputs } from "../login/login.style";
-import { Area, FilledBtn, OutlineBtn } from "../home/home.style";
+import {
+  LoginDiv,
+  FormFieldLabels,
+  FormInputs,
+} from "../../routes/login/login.style";
+import { Area, FilledBtn, OutlineBtn } from "../../routes/home/home.style";
 import {
   selectCurrentArrayNumber,
   selectEditableQuizArray,
   selectIsLoading,
   selectQuizTakerName,
-} from "../store/quizRoom/quizRoom.selector";
+} from "../../store/quizRoom/quizRoom.selector";
 import QuizQuestionContainer from "../quizQuestionContainer/quizQuestionContainer.component";
 import {
   getQuestionsFromDbStart,
   setQuizTakerName,
-} from "../store/quizRoom/quizRoom.action";
-import { EditableQuizFormat } from "../utils/firebase.utils";
+} from "../../store/quizRoom/quizRoom.action";
+import { EditableQuizFormat } from "../../utils/firebase.utils";
 
 const defaultFormFields = {
   quizTakerName: "",

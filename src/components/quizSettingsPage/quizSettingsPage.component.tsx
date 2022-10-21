@@ -3,10 +3,10 @@ import {
   setQuestionNumber,
   setQuizName,
   finishSettingQuestion,
-} from "../store/quiz/quiz.action";
+} from "../../store/quiz/quiz.action";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { Area, FilledBtn, OutlineBtn } from "../home/home.style";
+import { Area, FilledBtn, OutlineBtn } from "../../routes/home/home.style";
 import {
   LoginDiv,
   FormFieldLabels,
@@ -15,7 +15,7 @@ import {
   Or,
   DontHaveAccout,
   GoogleIcon,
-} from "../login/login.style";
+} from "../../routes/login/login.style";
 const defaultFormFields = {
   questionNumber: "",
   quizName: "",

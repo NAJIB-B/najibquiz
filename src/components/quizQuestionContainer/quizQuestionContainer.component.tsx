@@ -1,15 +1,13 @@
-import { EditableQuizFormat, QuizFormat } from "../../utils/firebase.utils";
+import { EditableQuizFormat } from "../../utils/firebase.utils";
 import { MouseEvent, ChangeEvent, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import {
-  setCheckedValue,
   setCheckedValueInEditableArray,
   uploadQuizResultToOwnerDbStart,
 } from "../../store/quizRoom/quizRoom.action";
 import { useNavigate } from "react-router-dom";
 import {
-  selectCheckedValue,
   selectCurrentArrayNumber,
   selectDoneWithQuiz,
   selectEditableQuizArray,
@@ -29,7 +27,6 @@ import {
   Next,
   Prev,
   Question,
-  QuestionsPage,
   Radiocontainer,
   SubmitBtn,
 } from "./quizQuestionContainer.styles";

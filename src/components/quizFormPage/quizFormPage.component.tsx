@@ -14,8 +14,6 @@ import { addQuestionToQuiz } from "../../store/quiz/quiz.action";
 import { FormInputs, FormFieldLabels } from "../../routes/login/login.style";
 import { finishSettingQuestion } from "../../store/quiz/quiz.action";
 import { selectfinishSettingQuestion } from "../../store/quiz/quiz.selector";
-import React from "react";
-import ReactDOM from "react-dom";
 import CreateQuizButtonPage from "../createQuizButtonPage/createQuizButtonPage.component";
 import Spinner from "../spinner/spinner.component";
 const defaultFormFields = {

@@ -9,8 +9,8 @@ import {
   selectQuizesData,
 } from "../../store/profile/profile.selector";
 
-import { Area, FilledBtn, OutlineBtn } from "../home/home.style";
-import { InnerQuizData } from "../../utils/firebase.utils";
+import { Area } from "../home/home.style";
+
 import { ProfileMainDiv, ProfileMainText } from "./profile.styles";
 import ProfilContainer from "../../components/profilContainer/profileContainer.component";
 const Profile = () => {
